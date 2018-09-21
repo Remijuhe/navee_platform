@@ -1,0 +1,6 @@
+  <% unless @post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",")[0].nil? %>
+    <% @post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",").each do |picture| %>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= picture %>');">
+        </div>
+      <% end %>
+  <% end %>
