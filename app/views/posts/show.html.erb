@@ -1,6 +1,52 @@
-  <% unless @post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",")[0].nil? %>
-    <% @post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",").each do |picture| %>
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= picture %>');">
-        </div>
-      <% end %>
-  <% end %>
+<%= render 'shared/navbar_show' %>
+
+<div class="container">
+  <h1>Post n° <%= @post.property_id %></h1>
+  <div class="btn btn-lg btn-success">Lauch Navee Engine</div>
+  <div class="post-box">
+    <div class="info">
+      <h2>Info</h2>
+      <div class="labels">
+        <!-- <h3>City</h3> -->
+        <div class="box-label"><%= @post.city %></div>
+<!--         <h3>Zipcode</h3> -->
+        <div class="box-label"><%= @post.zip_code %></div>
+      </div>
+      <div class="labels">
+        <!-- <h3>Address</h3> -->
+        <div class="box-label"><%= @post.address %></div>
+      </div>
+      <div class="labels">
+        <!-- <h3>Coordinates</h3> -->
+        <div class="box-label"><%= @post.coordinates %></div>
+      </div>
+      <div class="labels">
+        <!-- <h3>First name</h3> -->
+        <div class="box-label"><%= @post.firstname %></div>
+        <!-- <h3>Last name</h3> -->
+        <div class="box-label"><%= @post.lastname %></div>
+      </div>
+      <div class="labels">
+        <!-- <h3>Price</h3> -->
+        <div class="box-label"><%= @post.rent_with_expenses_amount.round %> € / mois</div>
+        <!-- <h3>Surface</h3> -->
+        <div class="box-label"><%= @post.property_surface.round %> m2</div>
+      </div>
+    </div>
+    <div class="description">
+      <h2>Description</h2>
+      <div class="box-label-description"><%= @post.description %></div>
+    </div>
+  </div>
+  <h2>Pictures</h2>
+  <div class="row">
+    <% unless @post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",")[0].nil? %>
+      <% @post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",").each do |picture| %>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= picture %>);">
+            </div>
+          </div>
+        <% end %>
+    <% end %>
+  </div>
+</div>
