@@ -16,3 +16,114 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "config/components/index";
+@import "config/animate";
+
+.icon i {
+  font-size: 40px;
+}
+
+body {
+  font-family: 'Heebo', sans-serif;
+  font-size:18px;
+  color:#6f8ba4;
+  line-height:1.6em;
+  font-weight:400;
+  background:#ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+}
+
+a{
+  text-decoration:none;
+  cursor:pointer;
+  color:#1f8ceb;
+}
+
+a:hover,a:focus,a:visited{
+  text-decoration:none;
+  outline:none;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  position:relative;
+  font-family: 'Heebo', sans-serif;
+  font-weight:400;
+  margin:0px;
+  background:none;
+  line-height:1.4em;
+}
+
+input,button,select,textarea{
+  font-family: 'Heebo', sans-serif;
+}
+
+textarea{
+  overflow:hidden;
+}
+
+p{
+  position:relative;
+  line-height:1.6em;
+}
+
+.strike-through{
+  text-decoration:line-through;
+}
+
+.auto-container{
+  position:static;
+  max-width:1200px;
+  padding:0px 15px;
+  margin:0 auto;
+}
+
+.medium-container{
+  max-width:850px;
+}
+
+.page-wrapper{
+  position:relative;
+  margin:0 auto;
+  width:100%;
+  min-width:300px;
+
+}
+
+ul,li{
+  list-style:none;
+  padding:0px;
+  margin:0px;
+}
+
+.theme_color{
+  color:#1f8ceb;
+}
+
+.no-bg{
+  background:none !important;
+}
+
+.light-font{
+  font-weight:300;
+}
+
+.regular-font{
+  font-weight:400;
+}
+
+.semibold-font{
+  font-weight:600;
+}
+
+.bold-font{
+  font-weight:700;
+}
+
+img{
+  display:inline-block;
+  max-width:100%;
+}
+
+.preloader{ position:fixed; left:0px; top:0px; width:100%; height:100%; z-index:999999; background-color:#ffffff; background-position:center center; background-repeat:no-repeat; background-image:url(../images/icons/preloader.svg);}
+

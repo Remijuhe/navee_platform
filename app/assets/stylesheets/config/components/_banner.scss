@@ -1,0 +1,203 @@
+.main-banner{
+  position:relative;
+  z-index:1;
+}
+
+/*Banner One*/
+.banner-one{
+  position:relative;
+  padding:250px 0px 100px;
+  background-position:left top;
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+
+.banner-one .text-column,
+.banner-one .image-column{
+  margin-bottom:30px;
+}
+
+.banner-one .text-column .inner{
+  position:relative;
+  padding-top:100px;
+}
+
+.banner-one .text-column h4{
+  font-size:18px;
+  color:#1f8ceb;
+  text-transform:capitalize;
+  margin-bottom:30px;
+}
+
+.banner-one .text-column h2{
+  font-size:36px;
+  font-weight:300;
+  color:#3b566e;
+  margin-bottom:15px;
+}
+
+.banner-one .text-column p{
+  font-size:18px;
+  margin-bottom:50px;
+}
+.banner-two{
+  position:relative;
+  padding:270px 0px;
+  background-position:center top;
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+
+.banner-two:before{
+  content:'';
+  position:absolute;
+  bottom:-300px;
+  left:0px;
+  width:100%;
+  height:437px;
+  background:url(../images/background/banner-shape-1.png) left bottom no-repeat;
+}
+
+.banner-two .text-column,
+.banner-two .image-column{
+  margin-bottom:30px;
+}
+
+.banner-two .text-column .inner{
+  position:relative;
+  padding-top:40px;
+}
+
+.banner-two .text-column h4{
+  font-size:18px;
+  color:#1f8ceb;
+  text-transform:capitalize;
+  margin-bottom:20px;
+}
+
+.banner-two .text-column h2{
+  font-size:34px;
+  font-weight:400;
+  color:#2a2f40;
+  margin-bottom:15px;
+}
+
+.banner-two .text-column p{
+  font-size:18px;
+  margin-bottom:40px;
+}
+
+/*Banner Three*/
+.banner-three{
+  position:relative;
+  padding:340px 0px;
+  background-position:center top;
+  background-repeat:no-repeat;
+  background-size:cover;
+  overflow:hidden;
+}
+
+.banner-three:before{
+  content:'';
+  position:absolute;
+  bottom:0px;
+  left:0px;
+  width:100%;
+  height:200px;
+  background:url(../images/background/banner-shape-2.png) left bottom no-repeat;
+}
+
+.banner-three .image-layer{
+  position:absolute;
+  right:0px;
+  top:0px;
+  width:50%;
+  left:50%;
+  height:100%;
+  background-position:right bottom;
+  background-repeat:no-repeat;
+  background-size:100% auto;
+}
+
+.banner-three .text-column{
+  position:relative;
+}
+
+.banner-three .text-column .inner{
+  position:relative;
+}
+
+.banner-three .text-column h4{
+  font-size:18px;
+  color:#1f8ceb;
+  text-transform:capitalize;
+  margin-bottom:20px;
+}
+
+.banner-three .text-column h2{
+  font-size:34px;
+  font-weight:500;
+  color:#2a2f40;
+  line-height:1.3em;
+  margin-bottom:15px;
+}
+
+.banner-three .text-column p{
+  font-size:18px;
+  margin-bottom:40px;
+}
+
+.banner-three .text-column .links-box a{
+  position:relative;
+  display:inline-block;
+  margin-right:30px;
+  margin-bottom:20px;
+}
+
+/*Banner Four*/
+.banner-four{
+  position:relative;
+  padding:280px 0px 300px;
+  background-color:#f9fcfe;
+  background-position:center top;
+  background-repeat:no-repeat;
+  background-size:cover;
+  overflow:hidden;
+}
+
+.banner-four:before{
+  content:'';
+  position:absolute;
+  bottom:0px;
+  left:0px;
+  width:100%;
+  height:250px;
+  background:url(../images/background/bg-shape-ten.png) right top no-repeat;
+}
+
+.banner-four .text-column,
+.banner-four .image-column{
+  margin-bottom:30px;
+}
+
+.banner-four .text-column .inner{
+  position:relative;
+  padding-top:80px;
+  color:#ffffff;
+}
+
+.banner-four .text-column h2{
+  font-size:36px;
+  font-weight:400;
+  margin-bottom:10px;
+}
+
+.banner-four .text-column p{
+  font-size:18px;
+  font-weight:300;
+  margin-bottom:50px;
+}
+
+.banner-four .text-column .theme-btn{
+  margin-right:30px;
+}
