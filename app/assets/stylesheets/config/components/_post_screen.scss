@@ -1,0 +1,86 @@
+.what-we-offer{
+  position:relative;
+  padding:130px 0px 0px;
+  background:#f9fbfd;
+}
+
+.what-we-offer .auto-container{
+  max-width:1120px;
+}
+
+.what-we-offer .text-column{
+  position:relative;
+  margin-bottom:50px;
+}
+
+.what-we-offer .text-column .inner{
+  padding-right:50px;
+}
+
+.what-we-offer .text-column h2{
+  color:#3b566e;
+  font-size:30px;
+  font-weight:500;
+  margin-bottom:25px;
+  padding-bottom:16px;
+  margin-top:-3px;
+}
+
+.what-we-offer .text-column h2:before{
+  content:'';
+  position:absolute;
+  left:0px;
+  bottom:0px;
+  width:50px;
+  border-bottom:3px solid #6db3f1;
+}
+
+.what-we-offer .text-column .text{
+  color:#466077;
+  font-weight:300;
+}
+
+.what-we-offer .services-column{
+  position:relative;
+}
+
+.what-we-offer .services-column .row{
+  margin:0px -20px;
+}
+
+.service-style-two{
+  position:relative;
+  padding:0px 20px;
+  margin-bottom:50px;
+}
+
+.service-style-two .inner-box{
+  position:relative;
+  display:block;
+}
+
+.service-style-two .inner-box .icon{
+  position:relative;
+  margin-bottom:25px;
+}
+
+.service-style-two .inner-box h3{
+  color:#3b566e;
+  font-size:20px;
+  font-weight:400;
+  margin-bottom:10px;
+}
+
+.service-style-two .inner-box h3 a{
+  color:#3b566e;
+}
+
+.service-style-two .inner-box h3 a:hover{
+  color:#1f8ceb;
+}
+
+.service-style-two .inner-box .text{
+  font-size:18px;
+  color:#466077;
+  font-weight:300;
+}

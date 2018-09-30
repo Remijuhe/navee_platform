@@ -1,0 +1,45 @@
+.contact-section{
+  position:relative;
+  background:#ffffff;
+  padding:130px 0px 100px;
+}
+
+.contact-section:before{
+  content:'';
+  position:absolute;
+  left:0px;
+  margin-left:-40px;
+  top:0px;
+  width:50%;
+  height:100%;
+  background:url(../assets/bg-shape-five.png) right center no-repeat;
+
+}
+
+.contact-section .sec-title{
+  margin-bottom:40px;
+}
+
+.contact-section .image-column{
+  position:relative;
+}
+
+.contact-section .image-column .inner{
+  position:relative;
+  margin-top:170px;
+}
+
+.contact-section .image-column .inner img{
+  max-width:none;
+  position:absolute;
+  right:40px;
+  top:0px;
+}
+
+.contact-section .form-column{
+  position:relative;
+}
+
+.form-box {
+  border: 1px solid rgba(31,140,235,0.50);
+}

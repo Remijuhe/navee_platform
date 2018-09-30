@@ -1,0 +1,26 @@
+<%= render 'shared/navbar_alternate' %>
+<section class="contact-section" id="contact">
+  <div class="auto-container">
+      <div class="row clearfix">
+        <div class="image-column col-md-6 col-sm-12 col-xs-12">
+        </div>
+        <div class="form-column col-md-6 col-sm-12 col-xs-12">
+        <div class="sec-title">
+          <h2>Add a new post to your Barinomi database</h2>
+        </div>
+
+          <%= simple_form_for @post do |f| %>
+            <%= f.input :rent_with_expenses_amount, input_html: { value: @price.gsub("€","").to_i } %>
+            <%= f.input :description, input_html: { value: @description }  %>
+            <%= f.input :firstname, input_html: { value: @name } %>
+            <%= f.input :property_surface, input_html: { value: @surface.gsub("m2","").to_i } %>
+            <%= f.input :address, input_html: { value: @address } %>
+            <%= f.input :pictures, input_html: { value: "#{@pictures_array}" } %>
+            <%= f.submit "Add a new post", class:"theme-btn btn-style-two" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

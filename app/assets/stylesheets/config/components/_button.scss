@@ -242,3 +242,22 @@
   color:#ffffff;
   background:#1f8ceb;
 }
+
+.fraudulent:hover {
+  background-color: #F21B3F;
+  border-color: #F21B3F;
+}
+
+.manual-check:hover {
+  background-color: #FF9914;
+  border-color: #FF9914;
+}
+
+.legit:hover {
+  background-color: #29BF12;
+  border-color: #29BF12;
+}
+
+#launch-engine {
+  margin-left: 388px;
+}

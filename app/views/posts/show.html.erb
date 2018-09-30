@@ -1,50 +1,187 @@
-<div class="container">
-  <h1>Post n° <%= @post.property_id %></h1>
-  <div class="btn btn-lg btn-success">Lauch Navee Engine</div>
-  <div class="post-box">
-    <div class="info">
-      <h2>Info</h2>
-      <div class="labels">
-        <!-- <h3>City</h3> -->
-        <div class="box-label"><%= @post.city %></div>
-<!--         <h3>Zipcode</h3> -->
-        <div class="box-label"><%= @post.zip_code %></div>
-      </div>
-      <div class="labels">
-        <!-- <h3>Address</h3> -->
-        <div class="box-label"><%= @post.address %></div>
-      </div>
-      <div class="labels">
-        <!-- <h3>Coordinates</h3> -->
-        <div class="box-label"><%= @post.coordinates %></div>
-      </div>
-      <div class="labels">
-        <!-- <h3>First name</h3> -->
-        <div class="box-label"><%= @post.firstname %></div>
-        <!-- <h3>Last name</h3> -->
-        <div class="box-label"><%= @post.lastname %></div>
-      </div>
-      <div class="labels">
-        <!-- <h3>Price</h3> -->
-        <div class="box-label"><%= @post.rent_with_expenses_amount.round %> € / mois</div>
-        <!-- <h3>Surface</h3> -->
-        <div class="box-label"><%= @post.property_surface.round %> m2</div>
-      </div>
-    </div>
-    <div class="description">
-      <h2>Description</h2>
-      <div class="box-label-description"><%= @post.description %></div>
-    </div>
-  </div>
-  <h2>Pictures</h2>
-  <div class="row">
-    <% unless @post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",")[0].nil? %>
-      <% @post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",").each do |picture| %>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= picture %>);">
-            </div>
+<style>
+.post-bar {
+  height: <%= @post_graph_height.round %>px;
+}
+.studapart-lower-bar {
+  height: <%= @studapart_price_height_lower.round %>px;
+}
+
+.studapart-mean-bar {
+  height: <%= @studapart_price_height_mean.round %>px;
+}
+
+.studapart-higher-bar {
+  height: <%= @studapart_price_height_higher.round %>px;
+}
+
+.market-lower-bar {
+  height: <%= @market_price_height_lower.round %>px;
+}
+
+.market-mean-bar {
+  height: <%= @market_price_height_mean.round %>px;
+}
+
+.market-higher-bar {
+  height: <%= @market_price_height_higher.round %>px;
+}
+</style>
+    <%= render 'shared/navbar' %>
+    <section class="what-we-offer" id="services">
+      <div class="auto-container">
+        <div class="row clearfix">
+          <div class="flexbox">
+            <%= simple_form_for(@post) do |f| %>
+              <%= f.input :status, input_html: { value: "Scam" }, as: :hidden %>
+              <%= f.submit "Scam", class: 'theme-btn btn-style-two fraudulent' %>
+            <% end %>
+            <%= simple_form_for(@post) do |f| %>
+              <%= f.input :status, input_html: { value: "To check" }, as: :hidden %>
+              <%= f.submit "To check", class: 'theme-btn btn-style-two manual-check' %>
+            <% end %>
+            <%= simple_form_for(@post) do |f| %>
+              <%= f.input :status, input_html: { value: "Legit" }, as: :hidden %>
+              <%= f.submit "Legit", class: 'theme-btn btn-style-two legit' %>
+            <% end %>
+            <div class="theme-btn btn-style-one" id="launch-engine"><i class="fas fa-cogs"></i> Launch Barinomi Engine</div>
           </div>
+            <div class="text-column col-md-6 col-sm-12 col-xs-12">
+                <div class="inner">
+                    <h2>Post : <%=@post.id%></h2>
+                    <div class="description-box">
+                      <div class="text"><p align="justify"><%= @post.description %></p></div>
+                  </div>
+                </div>
+            </div>
+                <div class="features-column col-md-6 col-sm-12 col-xs-12">
+                    <div class="inner">
+                        <div class="row clearfix">
+                            <div class="service-style-two col-md-6 col-sm-6 col-xs-12">
+                                <div class="inner-box">
+                                    <div class="icon"><figure class="image"><img src="../assets/icon-10.png" alt=""></figure></div>
+                                    <h3>User</h3>
+                                    <div class="text"><%= @post.firstname %><br><%= @post.lastname %></div>
+                                </div>
+                            </div>
+                            <div class="service-style-two col-md-6 col-sm-6 col-xs-12">
+                                <div class="inner-box">
+                                    <div class="icon"><figure class="image"><img src="../assets/icon-24.png" alt=""></figure></div>
+                                    <h3>Address</h3>
+                                    <div class="text"><%= @post.address %><br><%= @post.city %>
+                                      <%= @post.zip_code %>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="service-style-two col-md-6 col-sm-6 col-xs-12">
+                                <div class="inner-box">
+                                    <div class="icon"><figure class="image"><img src="../assets/icon-30.png" alt=""></figure></div>
+                                    <h3>Surface</h3>
+                                    <div class="text">
+                                      <% unless @post.property_surface.nil? %>
+                                        <%= @post.property_surface.round %> m2
+                                      <% end %>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="service-style-two col-md-6 col-sm-6 col-xs-12">
+                                <div class="inner-box">
+                                    <div class="icon"><figure class="image"><img src="../assets/icon-23.png" alt=""></figure></div>
+                                    <h3>Rent</h3>
+                                    <div class="text">
+                                    <% unless @post.rent_with_expenses_amount.nil? %>
+                                      <%= @post.rent_with_expenses_amount.round %> € / mois
+                                    <% end %>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="what-we-offer response-api" id="barinomi-analysis">
+      <div class="auto-container">
+        <div class="row clearfix">
+
+          <div class="flexbox">
+
+            <div class="text-column col-md-6 col-sm-12 col-xs-12">
+              <div class="inner">
+                <h2>Description analysis</h2>
+                <div class="description-box">
+                  <h3>Length</h3><p>post length: <%= @post.description.length %> characters <br> average length: 500 characters</p>
+                  <h3>Language</h3><p>french</p>
+                  <div class="text"><p align="justify"></p></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-column col-md-6 col-sm-12 col-xs-12">
+              <div class="inner">
+                <h2>Price analysis</h2>
+                <div class="description-box graph-box">
+
+                  <table id="q-graph">
+                  <caption>Price analysis</caption>
+                  <thead>
+                  <tr>
+                  <th></th>
+                  <th class="lower">Lower bracket</th>
+                  <th class="mean">Mean</th>
+                  <th class="upper">Upper bracket</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr class="qtr" id="q1">
+                  <th scope="row-graph">Post rent</th>
+                  <td class="post bar post-bar"><p><%= @post.rent_with_expenses_amount.round %></p></td>
+                  </tr>
+                  <tr class="qtr" id="q2">
+                  <th scope="row-graph">Studapart prices for similar goods</th>
+                  <td class="first bar studapart-lower-bar"><p><%= @response[:studapart_price][:lower] %></p></td>
+                  <td class="second bar studapart-mean-bar"><p><%= @response[:studapart_price][:mean] %></p></td>
+                  <td class="third bar studapart-higher-bar"><p><%= @response[:studapart_price][:higher] %></p></td>
+                  </tr>
+                  <tr class="qtr" id="q3">
+                  <th scope="row-graph">Market prices for similar goods</th>
+                  <td class="first bar market-lower-bar"><p><%= @response[:market_price][:lower] %></p></td>
+                  <td class="second bar market-mean-bar"><p><%= @response[:market_price][:mean] %></p></td>
+                  <td class="third bar market-higher-bar"><p><%= @response[:market_price][:higher] %></p></td>
+                  </tr>
+                  </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="testimonials-two" id="testimonials">
+      <div class="auto-container">
+        <div class="slick-carousel">
+        <% if !(@post.pictures.nil?) %>
+         <% unless @post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",")[0].nil? %>
+          <% @post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",").each do |picture| %>
+              <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= picture %>);">
+                  <div class="duplicate-number response-api">Number of duplicates : 1</div>
+                  <div class="picture-type response-api">Amateur</div>
+                </div>
+              </div>
+            <% end %>
         <% end %>
-    <% end %>
-  </div>
-</div>
+        <% end %>
+        </div>
+      </div>
+      <div class="response-api">
+        <%= @response %>
+        <%= @post.pictures %>
+      </div>
+    </section>
+
+

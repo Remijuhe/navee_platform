@@ -1,0 +1,115 @@
+.sec-title{
+  position:relative;
+  margin-bottom:60px;
+}
+
+.sec-title.centered{
+  margin-bottom:70px;
+}
+
+.sec-title .icon{
+  position:relative;
+  line-height:1em;
+  font-size:60px;
+  margin-bottom:30px;
+}
+
+.sec-title h2{
+  position:relative;
+  font-size:30px;
+  color:#3b566e;
+  font-weight:300;
+  line-height:1.4em;
+}
+
+.sec-title .desc-text{
+  position:relative;
+  font-size:18px;
+  line-height:1.6em;
+  font-weight:300;
+  padding-top:15px;
+}
+
+.sec-title.centered .desc-text{
+  max-width:720px;
+  margin:0 auto;
+}
+
+.sec-title-two{
+  position:relative;
+  margin-bottom:40px;
+}
+
+.sec-title-two.centered{
+  margin-bottom:70px;
+}
+
+.sec-title-two h2{
+  position:relative;
+  font-size:30px;
+  color:#3b566e;
+  font-weight:400;
+  line-height:1.4em;
+  padding-bottom:20px;
+}
+
+.sec-title-two.alternate h2{
+  color:#00000e;
+}
+
+.sec-title-two h2:before{
+  content:'';
+  position:absolute;
+  left:0px;
+  bottom:0px;
+  width:50px;
+  border-bottom:3px solid #6db3f1;
+}
+
+.sec-title-two.centered h2:before{
+  left:50%;
+  margin-left:-25px;
+}
+
+.sec-title-two .desc-text{
+  position:relative;
+  font-size:18px;
+  line-height:1.6em;
+  font-weight:300;
+  padding-top:30px;
+}
+
+.sec-title-two.centered .desc-text{
+  max-width:550px;
+  margin:0 auto;
+}
+
+.sec-title-three{
+  position:relative;
+  margin-bottom:50px;
+}
+
+.sec-title-three.centered{
+  margin-bottom:60px;
+}
+
+.sec-title-three h2{
+  position:relative;
+  font-size:30px;
+  color:#3b566e;
+  font-weight:300;
+  line-height:1.4em;
+}
+
+.sec-title-three .desc-text{
+  position:relative;
+  font-size:18px;
+  line-height:1.6em;
+  font-weight:300;
+  padding-top:20px;
+}
+
+.sec-title-three.centered .desc-text{
+  max-width:720px;
+  margin:0 auto;
+}

@@ -1,0 +1,138 @@
+
+.review-section{
+  position:relative;
+  background:#f9fbfd;
+  padding:130px 0px 100px;
+}
+
+.review-section .sec-title-two{
+  margin-bottom:50px;
+}
+
+.tabs-box{
+  position:relative;
+}
+
+.tabs-box .tab-buttons{
+  position:relative;
+}
+
+.tabs-box .tab-buttons .tab-btn{
+  position:relative;
+}
+
+.tabs-box .tabs-content{
+  position:relative;
+}
+
+.tabs-box .tabs-content .tab{
+  position:relative;
+  display:none;
+}
+
+.tabs-box .tabs-content .active-tab{
+  display:block;
+}
+
+.review-tabs{
+  position:relative;
+  z-index:5;
+}
+
+.review-tabs .buttons-box{
+  position:relative;
+  text-align:center;
+  margin-bottom:60px;
+}
+
+.review-tabs .tab-buttons{
+  position:relative;
+  display:inline-block;
+  border-bottom:1px solid #e0e0e0;
+  text-align:center;
+  font-size:16px;
+}
+
+.review-tabs .tab-buttons .tab-btn{
+  position:relative;
+  color:#6f8ba4;
+  float:left;
+  text-transform:capitalize;
+  line-height:24px;
+  margin:0px 0px;
+  font-weight:500;
+  padding:0px 27px 10px;
+  border-bottom:1px solid transparent;
+  cursor:pointer;
+}
+
+.review-tabs .tab-buttons .active-btn{
+  color:#3b566e;
+  border-bottom-color:#1f8ceb;
+}
+
+.review-tabs .tabs-content{
+  max-width:750px;
+  margin:0 auto;
+}
+
+.review-tabs .tabs-content .tab{
+  position:absolute;
+  opacity:0;
+  visibility:hidden;
+  height:0;
+  overflow:hidden;
+  transition:opacity 300ms ease;
+  -moz-transition:opacity 300ms ease;
+  -webkit-transition:opacity 300ms ease;
+  -ms-transition:opacity 300ms ease;
+  -o-transition:opacity 300ms ease;
+}
+
+.review-tabs .tabs-content .active-tab{
+  position:relative;
+  opacity:1;
+  visibility:visible;
+  height:auto;
+  overflow:visible;
+}
+
+.review-tabs .tabs-content .tab .image-column,
+.review-tabs .tabs-content .tab .text-column{
+  position:relative;
+  margin-bottom:30px;
+}
+
+.review-tabs .tabs-content .tab .image-column img{
+  position:relative;
+}
+
+.review-tabs .tabs-content .tab .text-column .inner{
+  position:relative;
+  display:block;
+  padding-top:10px;
+  padding-left:50px;
+}
+
+.review-tabs .tabs-content .tab .text-column .icon{
+  position:relative;
+  margin-bottom:30px;
+}
+
+.review-tabs .tabs-content .tab .text-column h3{
+  font-size:20px;
+  color:#3b566e;
+  font-weight:400;
+  margin-bottom:15px;
+}
+
+.review-tabs .tabs-content .tab .text-column .text{
+  font-size:18px;
+  color:#6f8ba4;
+  font-weight:300;
+  margin-bottom:30px;
+}
+
+.review-tabs .tabs-content .tab .text-column .more-link-one a{
+  text-transform:capitalize;
+}

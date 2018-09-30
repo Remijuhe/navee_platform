@@ -1,0 +1,163 @@
+$color-lower: #96F19E;
+$color-mean: #E6F181;
+$color-upper: #F1C558;
+$color-post: #0085f3;
+
+#q-graph {
+  display: block; /* fixes layout wonkiness in FF1.5 */
+  position: relative;
+  width: 430px;
+  height:210px;
+  margin: 1.1em 0 0;
+  padding: 0;
+  background: transparent;
+  font-size: 11px;
+}
+
+#q-graph caption {
+  caption-side: top;
+  width: 600px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  top: -40px;
+  position: relative;
+  z-index: 10;
+  font-weight: bold;
+}
+
+#q-graph tr, #q-graph th, #q-graph td {
+  position: absolute;
+  bottom: 0;
+  width: 150px;
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+#q-graph td {
+  transition: all .3s ease;
+
+  &:hover {
+    background-color: desaturate(#85144b, 100);
+    opacity: .9;
+    color: white;
+  }
+}
+
+#q-graph thead tr {
+  left: 100%;
+  top: 50%;
+  bottom: auto;
+  margin: -2.5em 0 0 5em;}
+#q-graph thead th {
+  width: 100px;
+  height: 20px;
+  padding: 0.5em 1em;
+  left: -70px;
+  line-height: 1;
+  margin-top: 60px;
+
+}
+#q-graph thead th.lower {
+  top: 0;
+  background-color: $color-lower;
+}
+#q-graph thead th.mean {
+  top: 2.75em;
+  background-color: $color-mean;
+}
+#q-graph thead th.upper {
+  top: 5.50em;
+  background-color: $color-upper;
+}
+
+#q-graph #q1 {
+  left: 0;
+}
+
+#q-graph #q2 {left: 65px;}
+#q-graph #q3 {left: 220px;}
+
+#q-graph tbody th {
+  bottom: -1.75em;
+  vertical-align: top;
+  font-weight: normal;
+  color: #333;
+  top: -7px;
+}
+
+#q-graph .bar {
+  width: 40px;
+  border: 1px solid;
+  border-bottom: none;
+  color: #000;
+}
+#q-graph .bar p {
+  margin: 5px 0 0;
+  padding: 0;
+  opacity: .4;
+  font-size: 15px;
+}
+
+#q-graph .post {
+  left: 15px;
+  background-color: $color-post;
+  border-color: transparent;
+}
+
+#q-graph .first {
+  left: 15px;
+  background-color: $color-lower;
+  border-color: transparent;
+}
+
+#q-graph .second {
+  left: 60px;
+  background-color: $color-mean;
+  border-color: transparent;
+}
+
+#q-graph .third {
+  left: 105px;
+  background-color: $color-upper;
+  border-color: transparent;
+}
+
+
+#ticks {
+  position: relative;
+  top: -300px;
+  left: 2px;
+  width: 596px;
+  height: 300px;
+  z-index: 1;
+  margin-bottom: -300px;
+  font-size: 10px;
+  font-family: "fira-sans-2", Verdana, sans-serif;
+}
+
+#ticks .tick {
+  position: relative;
+  border-bottom: 1px dotted #C4C4C4;
+  width: 600px;
+}
+
+#ticks .tick p {
+  position: absolute;
+  left: -5em;
+  top: -0.8em;
+  margin: 0 0 0 0.5em;
+}
+
+.graph-box {
+  width: 530px;
+}
+
+#q1 > th {
+
+}
+
+#q2 > th {
+
+}

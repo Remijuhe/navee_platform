@@ -1,33 +1,46 @@
-<div class="container">
-  <div class="row">
-    <div id="posts">
-        <% @posts.each do |post| %>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <% unless post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",")[0].nil? %>
-            <% picture = post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",")[0][1..-2] %>
+<%= render 'shared/navbar' %>
+<section class="main-banner banner-one banner-index" id="banner">
+  <div class="auto-container">
+    <div class="row clearfix">
+      <div id="posts">
+          <%= simple_form_for @post do |f| %>
+          <%= f.input :link %>
+          <%= f.submit "Add post" %>
+          <% end %>
+          <% @posts.each do |post| %>
+            <% if !(post.pictures.nil?) %>
+              <div class="col-xs-12 col-sm-6 col-md-4">
+                <% unless post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",")[0].nil? %>
+                <% picture = post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",")[0][1..-2] %>
+                <% end %>
+                <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= picture %>');">
+                <% if post.status == "Scam" %>
+                  <div class="card-label fraudulent-label"><%= post.status %></div>
+                <% elsif post.status == "Legit" %>
+                  <div class="card-label legit-label"><%= post.status %></div>
+                <% elsif post.status == "To check" %>
+                  <div class="card-label to-check-label"><%= post.status %></div>
+                <% else %>
+                  <div class="card-label not-checked-label"><%= post.status %></div>
+                <% end %>
+                <div class="card-title">
+                  <%= post.city%>
+                </div>
+                <div class="card-surface">
+                  <% if !(post.property_surface.nil?)%>
+                    <%= post.property_surface.round %>m2
+                  <% end %>
+                </div>
+                <div class="card-rent">
+                <%= post.rent_with_expenses_amount.round %>€
+                </div>
+                <a class="card-link" href="#" ></a>
+                 <%= link_to "", post_path(post.id), class:"card-link" %>
+                </div>
+              </div>
             <% end %>
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= picture %>');">
-            <% if post.status == "fraudulent" %>
-              <div class="card-label fraudulent"><%= post.status %></div>
-            <% else %>
-              <div class="card-label not-checked"><%= post.status %></div>
-            <% end %>
-            <div class="card-title">
-              <%= post.city%>
-            </div>
-            <div class="card-surface">
-              <% if !(post.property_surface.nil?)%>
-                <%= post.property_surface.round %>m2
-              <% end %>
-            </div>
-            <div class="card-rent">
-            <%= post.rent_with_expenses_amount.round %>€
-            </div>
-            <a class="card-link" href="#" ></a>
-             <%= link_to "", post_path(post.id), class:"card-link" %>
-            </div>
-          </div>
-      <% end %>
+          <% end %>
+      </div>
     </div>
   </div>
-</div>
+</section>

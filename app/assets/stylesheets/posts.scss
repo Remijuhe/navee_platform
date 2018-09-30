@@ -12,7 +12,6 @@
   background-position: center;
   color: white;
   position: relative;
-  border-radius: 5px;
   margin: 5px;
   box-shadow: 1px 1px 7px $gray;
   opacity: 0.8;
@@ -46,6 +45,8 @@
   text-transform: uppercase;
   padding: 10px;
   border-radius: 5px;
+  text-align: center;
+  width: 125px;
 }
 .card-rent {
   position: absolute;
@@ -72,69 +73,38 @@
   font-size: 24px;
 }
 
-.fraudulent {
-  background-color: $red;
+.fraudulent-label {
+  background-color: #F21B3F;
 }
 
-.not-checked {
+.not-checked-label {
   background-color: $gray;
 }
 
-.checked {
-  color: $green;
+.legit-label {
+  background-color: #29BF12;
+}
+
+.to-check-label {
+  background-color: #FF9914;
 }
 
 // 3. Show design
 
-.labels {
+.description-box {
+  width:400px;
+  height:255px;
+  overflow:auto;
+}
+
+.flexbox {
   display: flex;
+  border-bottom: 1px solid;
+  border-color: #1f8ceb;
+  margin-bottom: 30px;
 }
 
-.box-label {
-  padding: 10px;
+.flexbox .theme-btn {
   margin: 10px;
-  border-radius: 5px;
-  color:white;
-  opacity: 0.8;
-  background-color: #A69F98;
-  font-size: 20px;
-}
-
-.box-label:hover {
-  opacity: 1;
-}
-
-.description {
-  font-size: 20px;
-}
-
-.post-box {
-  display: flex;
-  justify-content: space-around;
-}
-
-.post-box h2{
-  text-align: center;
-}
-
-.box-label-description {
-  padding: 10px;
-  margin: 10px;
-  border-radius: 5px;
-  opacity: 0.8;
-  color: black;
-  font-size: 20px;
-  width: 500px;
-  justify-content: center;
-}
-
-.info {
-  border-radius: 10px;
-  box-shadow: 1px 1px 7px grey;
-}
-
-.description {
-  border-radius: 10px;
-  box-shadow: 1px 1px 7px grey;
-  overflow: hidden;
+  margin-bottom: 40px;
 }

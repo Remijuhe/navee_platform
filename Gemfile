@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+gem 'mechanize'
 gem 'pg_search'
 gem 'bootstrap-sass'
 gem 'simple_form'
