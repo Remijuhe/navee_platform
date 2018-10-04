@@ -32,17 +32,29 @@
       <div class="auto-container">
         <div class="row clearfix">
           <div class="flexbox">
-            <%= simple_form_for(@post) do |f| %>
-              <%= f.input :status, input_html: { value: "Scam" }, as: :hidden %>
-              <%= f.submit "Scam", class: 'theme-btn btn-style-two fraudulent' %>
+            <% if @post.status == "Scam" %>
+              <div class="theme-btn btn-style-two btn-clicked">Scam</div>
+            <% else %>
+              <%= simple_form_for(@post) do |f| %>
+                <%= f.input :status, input_html: { value: "Scam" }, as: :hidden %>
+                <%= f.submit "Scam", class: 'theme-btn btn-style-two fraudulent' %>
+              <% end %>
             <% end %>
-            <%= simple_form_for(@post) do |f| %>
-              <%= f.input :status, input_html: { value: "Call required" }, as: :hidden %>
-              <%= f.submit "Call required", class: 'theme-btn btn-style-two manual-check' %>
+            <% if @post.status == "Call required" %>
+               <div class="theme-btn btn-style-two btn-clicked">Call required</div>
+            <% else %>
+              <%= simple_form_for(@post) do |f| %>
+                <%= f.input :status, input_html: { value: "Call required" }, as: :hidden %>
+                <%= f.submit "Call required", class: 'theme-btn btn-style-two manual-check' %>
+              <% end %>
             <% end %>
-            <%= simple_form_for(@post) do |f| %>
-              <%= f.input :status, input_html: { value: "Legit" }, as: :hidden %>
-              <%= f.submit "Legit", class: 'theme-btn btn-style-two legit' %>
+            <% if @post.status == "Legit"%>
+              <div class="theme-btn btn-style-two btn-clicked">Legit</div>
+            <% else %>
+              <%= simple_form_for(@post) do |f| %>
+                <%= f.input :status, input_html: { value: "Legit" }, as: :hidden %>
+                <%= f.submit "Legit", class: 'theme-btn btn-style-two legit' %>
+              <% end %>
             <% end %>
             <div class="theme-btn btn-style-one" id="launch-engine"><i class="fas fa-cogs"></i> Launch Barinomi Engine</div>
           </div>
@@ -132,22 +144,23 @@
               <div class="inner">
                 <h2>Description analysis</h2>
                 <div class="description-box">
-                  <h3>Length</h3><p>post length:
-                    <div class="number-of-posts"> <%= @post.description.length %> characters
-                    </div> <br> average length: 500 characters</p>
-                  <h3>Language</h3>
-                  <p>
+                  <div>
+                    Post length : <span class="number-of-posts" data-toggle="tooltip" data-placement="right" title="average length : 500 characters"> <%= @post.description.length %> characters </span>
+                  </div>
+                  <div>
+                  Language detected:
                     <% @response[:language_detected].each do |language| %>
-                      <div class="number-of-posts">
+                      <span>
                         <%= language %>
-                      </div>
+                      </span>
                     <% end %>
-                  </p>
-                  <h3>Scammer lexical score</h3><p>
-                    <div class="number-of-posts">
+                  </div>
+                  <div>
+                  Scammer lexical score :
+                    <span class="number-of-posts" data-toggle="tooltip" data-placement="right" title="average score : 20 %">
                       <%= @response[:lexical_fields_of_scammer_score] * 100 %>%
-                    </div>
-                    </p>
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>

@@ -25,7 +25,7 @@ class PostsController < ApplicationController
      "studapart_price": {"lower": 300, "mean": 500, "higher": 700},
      "labels": ["meublé", "collocation"],
      "duplicate_pictures_checking": {"nb_duplicates": 2, "list_duplicates": [{"url": "url_duplicate", "crawl_date": "12 Jul. 2018"}, {"url": "url_duplicate", "crawl_date": "13 Oct. 2015"}]},
-     "syntax_checking": [{"error_message": "msg", "from": 7, "to":16}, {"error_message": "msg", "from": 20, "to":27}],
+     "syntax_checking": [{"error_message": "msg", "from": 7, "to":16}, {"error_message": "msg", "from": 16, "to":27}],
      "lexical_fields_of_scammer_score": 0.8,
      "language_detected": ["français", "anglais"],
      "picture_quality": {"url_1": "pro", "url_2": "amateur"},

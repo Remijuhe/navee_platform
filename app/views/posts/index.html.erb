@@ -1,4 +1,4 @@
-<%= render 'shared/loading' %>
+
 <%= render 'shared/navbar_index' %>
 <section class="main-banner banner-one banner-index" id="banner">
   <div class="auto-container">
@@ -8,7 +8,7 @@
             <% if !(post.pictures.nil?) %>
               <div class="col-xs-12 col-sm-6 col-md-4">
                 <% unless post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",")[0].nil? %>
-                <% picture = post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",")[0][1..-2] %>
+                <% picture = post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",")[0][0..-1] %>
                 <% end %>
                 <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= picture %>');">
                 <% if post.status == "Scam" %>
