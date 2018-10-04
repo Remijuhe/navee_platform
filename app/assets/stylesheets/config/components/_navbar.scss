@@ -196,6 +196,8 @@
   opacity:1;
   visibility:visible;
   background-color:#ffffff;
+  overflow: hidden;
+  margin-bottom: solid 1px black;
 }
 
 .main-header.header-style-two.fixed-header .main-box{
@@ -286,7 +288,7 @@
 .main-menu .navigation > li{
   position:relative;
   float:left;
-  margin:0px 0px 0px 40px;
+  margin:0px 60px 0px 40px;
 }
 
 .main-menu .navigation > li > a{
@@ -509,4 +511,33 @@
   cursor:pointer;
   z-index:5;
   display:none;
+}
+
+.logo-wording {
+  position: absolute;
+  top: -5px;
+  width: 100px;
+  z-index: 100000;
+  left: 15px;
+  overflow: hidden;
+  transition: all 0.5s ease;
+ }
+
+ .logo-box {
+  position: sticky;
+  top: 10px;
+  left: 110px;
+  z-index: 10000;
+  width: 120px;
+  height: 80px;
+  overflow: hidden;
+}
+
+.transform-active {
+  top: -65px;
+  transition: all 0.5s ease;
+}
+
+.transform-desactive {
+  top: 0px;
 }

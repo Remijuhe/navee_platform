@@ -1,12 +1,9 @@
-<%= render 'shared/navbar' %>
+<%= render 'shared/loading' %>
+<%= render 'shared/navbar_index' %>
 <section class="main-banner banner-one banner-index" id="banner">
   <div class="auto-container">
     <div class="row clearfix">
       <div id="posts">
-          <%= simple_form_for @post do |f| %>
-          <%= f.input :link %>
-          <%= f.submit "Add post" %>
-          <% end %>
           <% @posts.each do |post| %>
             <% if !(post.pictures.nil?) %>
               <div class="col-xs-12 col-sm-6 col-md-4">
@@ -15,16 +12,20 @@
                 <% end %>
                 <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= picture %>');">
                 <% if post.status == "Scam" %>
-                  <div class="card-label fraudulent-label"><%= post.status %></div>
+                  <div class="card-label legit-label"><%= post.status %></div>
                 <% elsif post.status == "Legit" %>
                   <div class="card-label legit-label"><%= post.status %></div>
-                <% elsif post.status == "To check" %>
-                  <div class="card-label to-check-label"><%= post.status %></div>
+                <% elsif post.status == "Call required" %>
+                  <div class="card-label legit-label"><%= post.status %></div>
                 <% else %>
                   <div class="card-label not-checked-label"><%= post.status %></div>
                 <% end %>
                 <div class="card-title">
-                  <%= post.city%>
+                  <% if !(post.city.nil?) %>
+                    <%= post.city %>
+                  <% else %>
+                    Paris
+                  <% end %>
                 </div>
                 <div class="card-surface">
                   <% if !(post.property_surface.nil?)%>

@@ -1,6 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+gem 'jquery-ui-rails'
+gem 'jquery-rails'
+gem 'webshot'
+gem 'screencap'
 gem 'mechanize'
 gem 'pg_search'
 gem 'bootstrap-sass'

@@ -1,0 +1,23 @@
+.tooltip-inner {
+  background-color: #0085f3;
+  padding: 0px 30px 0px 30px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+
+.tooltip.top .tooltip-arrow {
+  border-top-color: #0085f3;
+}
+
+.tooltip.right .tooltip-arrow {
+  border-right-color: #0085f3;
+}
+
+.tooltip.bottom .tooltip-arrow {
+  border-bottom-color: #0085f3;
+}
+
+.tooltip.left .tooltip-arrow {
+  border-left-color: #0085f3;
+}

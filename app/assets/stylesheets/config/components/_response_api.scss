@@ -14,7 +14,7 @@
   padding: 10px;
   padding: 12px 45px;
   line-height: 12px;
-  background: #1f8ceb;
+  background: #0085F3;
   font-size: 16px;
   font-weight: 400;
   color: #ffffff;
@@ -32,7 +32,7 @@
   padding: 10px;
   padding: 12px 45px;
   line-height: 12px;
-  background: #1f8ceb;
+  background: #0085F3;
   font-size: 16px;
   font-weight: 400;
   color: #ffffff;
@@ -43,3 +43,19 @@
   height: 35px;
 }
 
+.syntax-errors {
+  background-color: #0085F3;
+  // color: white !important;
+}
+
+.number-of-posts {
+  background-color: #0085F3;
+  color: white !important;
+  padding: 3px;
+  border-radius: 4px;
+  width: fit-content;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-right: 10px;
+  display: inline;
+}

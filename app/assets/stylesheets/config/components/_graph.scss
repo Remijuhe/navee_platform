@@ -1,13 +1,13 @@
 $color-lower: #B9F8D0;
 $color-mean: #95D3FF;
 $color-upper: rgb(200, 200, 200);
-$color-post: #0085f3;
+$color-post: desaturate(#85144b, 100);
 
 #q-graph {
   display: block; /* fixes layout wonkiness in FF1.5 */
   position: relative;
   width: 430px;
-  height:210px;
+  height:230px;
   margin: 1.1em 0 0;
   padding: 0;
   background: transparent;
@@ -28,7 +28,7 @@ $color-post: #0085f3;
 #q-graph tr, #q-graph th, #q-graph td {
   position: absolute;
   bottom: 0;
-  width: 150px;
+  width: 160px;
   z-index: 2;
   margin: 0;
   padding: 0;
@@ -41,7 +41,7 @@ $color-post: #0085f3;
   &:hover {
     background-color: desaturate(#85144b, 100);
     opacity: .9;
-    color: white;
+    color: desaturate(#85144b, 100);
   }
 }
 
@@ -56,7 +56,7 @@ $color-post: #0085f3;
   padding: 0.5em 1em;
   left: -70px;
   line-height: 1;
-  margin-top: 60px;
+  margin-top: 50px;
 
 }
 #q-graph thead th.lower {
@@ -96,7 +96,7 @@ $color-post: #0085f3;
 #q-graph .bar p {
   margin: 5px 0 0;
   padding: 0;
-  opacity: .4;
+  opacity: 1;
   font-size: 15px;
 }
 
@@ -160,4 +160,31 @@ $color-post: #0085f3;
 
 #q2 > th {
 
+}
+
+#q1 > td > p {
+  color: white;
+  font-weight: bold;
+}
+
+#q1 > th {
+  margin-right: 10px;
+}
+
+.label-price-box {
+  display: flex;
+}
+
+.label-price {
+  background: #f4f9fe;
+  padding: 10px;
+  border: solid 1px #1f8ceb;
+  margin: 10px;
+  border-radius: 5px;
+  color: #3b566e;
+}
+
+#q1 > td {
+  color: white !important;
+  font-size: 15px;
 }

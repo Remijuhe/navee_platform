@@ -26,6 +26,7 @@
   height: <%= @market_price_height_higher.round %>px;
 }
 </style>
+    <%= render 'shared/loading_engine' %>
     <%= render 'shared/navbar' %>
     <section class="what-we-offer" id="services">
       <div class="auto-container">
@@ -36,8 +37,8 @@
               <%= f.submit "Scam", class: 'theme-btn btn-style-two fraudulent' %>
             <% end %>
             <%= simple_form_for(@post) do |f| %>
-              <%= f.input :status, input_html: { value: "To check" }, as: :hidden %>
-              <%= f.submit "To check", class: 'theme-btn btn-style-two manual-check' %>
+              <%= f.input :status, input_html: { value: "Call required" }, as: :hidden %>
+              <%= f.submit "Call required", class: 'theme-btn btn-style-two manual-check' %>
             <% end %>
             <%= simple_form_for(@post) do |f| %>
               <%= f.input :status, input_html: { value: "Legit" }, as: :hidden %>
@@ -49,7 +50,20 @@
                 <div class="inner">
                     <h2>Post : <%=@post.id%></h2>
                     <div class="description-box">
-                      <div class="text"><p align="justify"><%= @post.description %></p></div>
+                      <div class="text description-base"><p align="justify"><%= @post.description %></p></div>
+                      <div class="text response-api"><p align="justify">
+                        <% counter = 0 %>
+                        <% @description_array.each do |array| %>
+                          <% if counter.odd? %>
+                            <span class="error" data-toggle="tooltip" data-placement="bottom" title="<%= array[0] %>"><%=@post.description[array[1], array[2]]%></span>
+                            <% counter += 1 %>
+                          <% else %>
+                            <span class="no_error"><%=@post.description[array[1], array[2]]%></span>
+                            <% counter += 1 %>
+                          <% end %>
+                        <% end %>
+                      </p>
+                      </div>
                   </div>
                 </div>
             </div>
@@ -60,7 +74,13 @@
                                 <div class="inner-box">
                                     <div class="icon"><figure class="image"><img src="../assets/icon-10.png" alt=""></figure></div>
                                     <h3>User</h3>
-                                    <div class="text"><%= @post.firstname %><br><%= @post.lastname %></div>
+                                    <div class="text">
+                                      <%= @post.firstname %><br>
+                                      <%= @post.lastname %>
+                                      <div class="response-api">
+                                        Number of posts: <%= @response[:nb_posts_user] %>
+                                      </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="service-style-two col-md-6 col-sm-6 col-xs-12">
@@ -112,9 +132,22 @@
               <div class="inner">
                 <h2>Description analysis</h2>
                 <div class="description-box">
-                  <h3>Length</h3><p>post length: <%= @post.description.length %> characters <br> average length: 500 characters</p>
-                  <h3>Language</h3><p>french</p>
-                  <div class="text"><p align="justify"></p></div>
+                  <h3>Length</h3><p>post length:
+                    <div class="number-of-posts"> <%= @post.description.length %> characters
+                    </div> <br> average length: 500 characters</p>
+                  <h3>Language</h3>
+                  <p>
+                    <% @response[:language_detected].each do |language| %>
+                      <div class="number-of-posts">
+                        <%= language %>
+                      </div>
+                    <% end %>
+                  </p>
+                  <h3>Scammer lexical score</h3><p>
+                    <div class="number-of-posts">
+                      <%= @response[:lexical_fields_of_scammer_score] * 100 %>%
+                    </div>
+                    </p>
                 </div>
               </div>
             </div>
@@ -122,10 +155,13 @@
             <div class="text-column col-md-6 col-sm-12 col-xs-12">
               <div class="inner">
                 <h2>Price analysis</h2>
-                <div class="description-box graph-box">
-
+                <div class="label-price-box">
+                  <% @response[:labels].each do |label| %>
+                    <div class="number-of-posts"><%= label %></div>
+                  <% end %>
+                </div>
+                <div class="description-box graph-box overflow-visible">
                   <table id="q-graph">
-                  <caption>Price analysis</caption>
                   <thead>
                   <tr>
                   <th></th>
@@ -136,23 +172,54 @@
                   </thead>
                   <tbody>
                   <tr class="qtr" id="q1">
-                  <th scope="row-graph">Post rent</th>
-                  <td class="post bar post-bar"><p><%= @post.rent_with_expenses_amount.round %></p></td>
+                  <th scope="row-graph"></th>
+                  <td class="post bar post-bar"data-toggle="tooltip" data-placement="top" title="Post price : <%= @post.rent_with_expenses_amount.round %>€"><p></p><%= @post.rent_with_expenses_amount.round %></td>
                   </tr>
                   <tr class="qtr" id="q2">
-                  <th scope="row-graph">Studapart prices for similar goods</th>
-                  <td class="first bar studapart-lower-bar"><p><%= @response[:studapart_price][:lower] %></p></td>
-                  <td class="second bar studapart-mean-bar"><p><%= @response[:studapart_price][:mean] %></p></td>
-                  <td class="third bar studapart-higher-bar"><p><%= @response[:studapart_price][:higher] %></p></td>
+                  <th scope="row-graph">Studapart prices</th>
+                  <td class="first bar studapart-lower-bar" data-toggle="tooltip" data-placement="top" title="Studapart price (lower) : <%= @response[:studapart_price][:lower] %>€"><p><%= @response[:studapart_price][:lower] %></p></td>
+                  <td class="second bar studapart-mean-bar"data-toggle="tooltip" data-placement="top" title="Studapart price (mean) : <%= @response[:studapart_price][:mean] %>€"><p><%= @response[:studapart_price][:mean] %></p></td>
+                  <td class="third bar studapart-higher-bar"data-toggle="tooltip" data-placement="top" title="Studapart price (higher) : <%= @response[:studapart_price][:higher] %>€"><p><%= @response[:studapart_price][:higher] %></p></td>
                   </tr>
                   <tr class="qtr" id="q3">
-                  <th scope="row-graph">Market prices for similar goods</th>
-                  <td class="first bar market-lower-bar"><p><%= @response[:market_price][:lower] %></p></td>
-                  <td class="second bar market-mean-bar"><p><%= @response[:market_price][:mean] %></p></td>
-                  <td class="third bar market-higher-bar"><p><%= @response[:market_price][:higher] %></p></td>
+                  <th scope="row-graph">Market prices</th>
+                  <td class="first bar market-lower-bar"data-toggle="tooltip" data-placement="top" title="Market price (lower) : <%= @response[:market_price][:lower] %>€"><p><%= @response[:market_price][:lower] %></p></td>
+                  <td class="second bar market-mean-bar"data-toggle="tooltip" data-placement="top" title="Market price (mean) : <%= @response[:market_price][:mean] %>€"><p><%= @response[:market_price][:mean] %></p></td>
+                  <td class="third bar market-higher-bar"data-toggle="tooltip" data-placement="top" title="Market price (higher) : <%= @response[:market_price][:higher] %>€"><p><%= @response[:market_price][:higher] %></p></td>
                   </tr>
                   </tbody>
                   </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+        <section class="what-we-offer response-api" id="barinomi-analysis">
+      <div class="auto-container">
+        <div class="row clearfix">
+
+          <div class="flexbox">
+
+            <div class="text-column col-md-6 col-sm-12 col-xs-12">
+              <div class="inner">
+                <h2>Text duplicates</h2>
+                <div class="description-box">
+                  <div class="number-of-posts"><%= (@response[:duplicated_text][0][1] * 100).round %> % </div> of the text matches this post:<br>
+                  Post n°<%= @response[:duplicated_text][0][0] %>
+                  <br>
+                  <%= (@response[:duplicated_text][1][1] * 100).round %> % of the text matches this post:<br>
+                  Post n°<%= @response[:duplicated_text][1][0] %>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-column col-md-6 col-sm-12 col-xs-12">
+              <div class="inner">
+                <h2>Picture duplicates</h2>
+                <div class="description-box">
+                  <%= @response[:duplicated_images] %>
                 </div>
               </div>
             </div>
@@ -163,25 +230,19 @@
     </section>
     <section class="testimonials-two" id="testimonials">
       <div class="auto-container">
-        <div class="slick-carousel">
+
         <% if !(@post.pictures.nil?) %>
          <% unless @post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",")[0].nil? %>
           <% @post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",").each do |picture| %>
               <div class="col-xs-12 col-sm-6 col-md-4">
                 <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= picture %>);">
-                  <div class="duplicate-number response-api">Number of duplicates : 1</div>
+                  <div class="duplicate-number response-api">Results on the web : 1</div>
                   <div class="picture-type response-api">Amateur</div>
                 </div>
               </div>
             <% end %>
         <% end %>
         <% end %>
-        </div>
-      </div>
-      <div class="response-api">
-        <%= @response %>
-        <%= @post.pictures %>
       </div>
     </section>
-
 

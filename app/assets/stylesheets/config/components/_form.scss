@@ -43,3 +43,26 @@
 .form-box {
   border: 1px solid rgba(31,140,235,0.50);
 }
+
+.add-post-form {
+  padding-top: 23px;
+  display: flex;
+  justify-content: center;
+}
+
+#new_post > div > label {
+  display: none;
+}
+
+div > label {
+  display: none;
+}
+
+#edit_post > div.form-group.string.optional > label {
+  display: true;
+}
+
+#post_link {
+  color: lightgray;
+  font-style: italic;
+}

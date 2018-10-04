@@ -43,10 +43,10 @@
   right: 10px;
   font-size: 15px;
   text-transform: uppercase;
-  padding: 10px;
+  padding: 4px;
   border-radius: 5px;
   text-align: center;
-  width: 125px;
+  width: 155px;
 }
 .card-rent {
   position: absolute;
@@ -82,7 +82,7 @@
 }
 
 .legit-label {
-  background-color: #29BF12;
+  background-color: #0085F3;
 }
 
 .to-check-label {
@@ -94,7 +94,11 @@
 .description-box {
   width:400px;
   height:255px;
-  overflow:auto;
+  overflow: auto;
+}
+
+.overflow-visible {
+  overflow: visible;
 }
 
 .flexbox {
@@ -107,4 +111,11 @@
 .flexbox .theme-btn {
   margin: 10px;
   margin-bottom: 40px;
+}
+
+.error {
+  background-color: #0085F3;
+  color: white;
+  padding: 1px;
+  border-radius: 2px;
 }

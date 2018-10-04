@@ -1,8 +1,12 @@
+<%= render 'shared/loading' %>
 <%= render 'shared/navbar_alternate' %>
 <section class="contact-section" id="contact">
   <div class="auto-container">
       <div class="row clearfix">
         <div class="image-column col-md-6 col-sm-12 col-xs-12">
+        <div class="inner">
+          <figure class="image"><img src="<%= @pictures_array[0] %>" alt="" style="max-width:500px;"></figure>
+        </div>
         </div>
         <div class="form-column col-md-6 col-sm-12 col-xs-12">
         <div class="sec-title">
@@ -15,6 +19,7 @@
             <%= f.input :firstname, input_html: { value: @name } %>
             <%= f.input :property_surface, input_html: { value: @surface.gsub("m2","").to_i } %>
             <%= f.input :address, input_html: { value: @address } %>
+            <%= f.input :city, input_html: { value: @city } %>
             <%= f.input :pictures, input_html: { value: "#{@pictures_array}" } %>
             <%= f.submit "Add a new post", class:"theme-btn btn-style-two" %>
           <% end %>

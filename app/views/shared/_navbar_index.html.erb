@@ -1,15 +1,24 @@
-<header class="main-header alternate">
+<header class="main-header alternate fixed-header">
   <div class="main-box">
     <div class="auto-container">
       <div class="outer-container clearfix">
         <div class="logo-box">
           <div class="navee-logo"><a href="/"><figure class="logo-wording"><img src="../assets/logo_boat_wording.png" alt=""></figure></a></div>
           </div>
+
           <div class="nav-outer clearfix">
             <% if user_signed_in? %>
               <nav class="main-menu">
                   <div class="navbar-collapse collapse scroll-nav clearfix">
                     <ul class="navigation clearfix">
+                      <li>
+                        <div class="add-post-form">
+                          <%= simple_form_for @post, html: {class: 'form-inline'} do |f| %>
+                            <%= f.input :link, input_html: { value: "Copy url" } %>
+                            <%= f.submit "Add post", :class => "theme-btn btn-style-one btn-small" %>
+                          <% end %>
+                        </div>
+                      </li>
                       <li><%= link_to "Dashboard", posts_path %>
                       </li>
                      </ul>
@@ -18,6 +27,7 @@
               <% end %>
               <div class="other-links">
                 <% if user_signed_in? %>
+
                   <%= link_to destroy_user_session_path, class:"theme-btn btn-style-one",method: :delete do %>
                       <%= t(".sign_out", default: "Log out") %>
                   <% end %>

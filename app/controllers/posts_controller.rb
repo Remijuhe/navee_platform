@@ -1,5 +1,3 @@
-require 'net/http'
-
 class PostsController < ApplicationController
   def index
     if params[:query].present?
@@ -22,12 +20,12 @@ class PostsController < ApplicationController
     @response = {
      "nb_posts_user": 3,
      "duplicated_text": [["property_id_1", 0.8], ["property_id_2", 0.4]],
-     "duplicated_images": [["property_id_1", "image_link_1"], ["property_id_2", "image_link_2"]],
+     "duplicated_images": [["property_id_1", "https://student.studapart.com/media/cache/property_images_large/5995e0c9c2b32.jpeg"], ["property_id_2", "https://student.studapart.com/media/cache/property_images_large/5995e0c9c2b32.jpeg"]],
      "market_price": {"lower": 300, "mean": 500, "higher": 700},
      "studapart_price": {"lower": 300, "mean": 500, "higher": 700},
      "labels": ["meublé", "collocation"],
      "duplicate_pictures_checking": {"nb_duplicates": 2, "list_duplicates": [{"url": "url_duplicate", "crawl_date": "12 Jul. 2018"}, {"url": "url_duplicate", "crawl_date": "13 Oct. 2015"}]},
-     "syntax_checking": [{"error_message": "msg", "from": 5, "to":10}, {"error_message": "msg", "from": 5, "to":10}],
+     "syntax_checking": [{"error_message": "msg", "from": 7, "to":16}, {"error_message": "msg", "from": 20, "to":27}],
      "lexical_fields_of_scammer_score": 0.8,
      "language_detected": ["français", "anglais"],
      "picture_quality": {"url_1": "pro", "url_2": "amateur"},
@@ -35,14 +33,24 @@ class PostsController < ApplicationController
      "errors_api": ["error_1", "error_2", "error_3"]
     }
 
-    # Graph size
-    @post_graph_height = @post.rent_with_expenses_amount.round * 0.2
-    @market_price_height_lower = @response[:market_price][:lower] * 0.2
-    @market_price_height_mean = @response[:market_price][:mean] * 0.2
-    @market_price_height_higher = @response[:market_price][:higher] * 0.2
-    @studapart_price_height_lower = @response[:studapart_price][:lower] * 0.2
-    @studapart_price_height_mean = @response[:studapart_price][:mean] * 0.2
-    @studapart_price_height_higher = @response[:studapart_price][:higher] * 0.2
+    # Price analysis, graph size
+    @post_graph_height = @post.rent_with_expenses_amount.round * 0.15
+    @market_price_height_lower = @response[:market_price][:lower] * 0.15
+    @market_price_height_mean = @response[:market_price][:mean] * 0.15
+    @market_price_height_higher = @response[:market_price][:higher] * 0.15
+    @studapart_price_height_lower = @response[:studapart_price][:lower] * 0.15
+    @studapart_price_height_mean = @response[:studapart_price][:mean] * 0.15
+    @studapart_price_height_higher = @response[:studapart_price][:higher] * 0.15
+
+    #Description analysis, syntax checking
+    @description_array = []
+    previous_number = 0
+    @response[:syntax_checking].each do |error|
+      @description_array << ["no_error", previous_number, error[:from] - previous_number]
+      @description_array << [error[:error_message], error[:from], error[:to] - error[:from]]
+      previous_number = error[:to]
+    end
+    @description_array << ["no_error", previous_number, @post.description.length]
   end
 
   def edit
