@@ -119,3 +119,20 @@
   padding: 1px;
   border-radius: 2px;
 }
+
+.card-picture {
+  max-width: 400px;
+}
+
+.display-none {
+  display: none;
+}
+
+.reverse-picture-results {
+  padding: 70px;
+  overflow: auto;
+  max-height: 175px;
+  margin: inherit;
+  text-align: center;
+}
+

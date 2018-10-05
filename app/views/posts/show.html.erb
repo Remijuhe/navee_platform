@@ -90,7 +90,7 @@
                                       <%= @post.firstname %><br>
                                       <%= @post.lastname %>
                                       <div class="response-api">
-                                        Number of posts: <%= @response[:nb_posts_user] %>
+                                        Number of posts: <%= @post.nb_posts_user %>
                                       </div>
                                     </div>
                                 </div>
@@ -149,16 +149,34 @@
                   </div>
                   <div>
                   Language detected:
-                    <% @response[:language_detected].each do |language| %>
+                    <% eval(@post.languages_detected).each do |language| %>
                       <span>
                         <%= language %>
                       </span>
                     <% end %>
                   </div>
                   <div>
-                  Scammer lexical score :
-                    <span class="number-of-posts" data-toggle="tooltip" data-placement="right" title="average score : 20 %">
-                      <%= @response[:lexical_fields_of_scammer_score] * 100 %>%
+                  Description suspiciousness :
+                    <span class="number-of-posts" data-toggle="tooltip" data-placement="right" title="average score : 3.02 %">
+                      <%= @post.description_suspiciousness %> %
+                    </span>
+                  </div>
+                  <div>
+                  Email detected :
+                    <span class="number-of-posts">
+                      <%= @post.email_detected %>
+                    </span>
+                  </div>
+                  <div>
+                  Phone number detected :
+                    <span class="number-of-posts">
+                      <%= @post.phone_detected %>
+                    </span>
+                  </div>
+                  <div>
+                  Url detected :
+                    <span class="number-of-posts">
+                      <%= @post.url_detected %>
                     </span>
                   </div>
                 </div>
@@ -169,7 +187,7 @@
               <div class="inner">
                 <h2>Price analysis</h2>
                 <div class="label-price-box">
-                  <% @response[:labels].each do |label| %>
+                  <% eval(@post.labels).each do |label| %>
                     <div class="number-of-posts"><%= label %></div>
                   <% end %>
                 </div>
@@ -190,15 +208,15 @@
                   </tr>
                   <tr class="qtr" id="q2">
                   <th scope="row-graph">Studapart prices</th>
-                  <td class="first bar studapart-lower-bar" data-toggle="tooltip" data-placement="top" title="Studapart price (lower) : <%= @response[:studapart_price][:lower] %>€"><p><%= @response[:studapart_price][:lower] %></p></td>
-                  <td class="second bar studapart-mean-bar"data-toggle="tooltip" data-placement="top" title="Studapart price (mean) : <%= @response[:studapart_price][:mean] %>€"><p><%= @response[:studapart_price][:mean] %></p></td>
-                  <td class="third bar studapart-higher-bar"data-toggle="tooltip" data-placement="top" title="Studapart price (higher) : <%= @response[:studapart_price][:higher] %>€"><p><%= @response[:studapart_price][:higher] %></p></td>
+                  <td class="first bar studapart-lower-bar" data-toggle="tooltip" data-placement="top" title="Studapart price (lower) : <%= eval(@post.studapart_price)["lower"].round %>€"><p><%= eval(@post.studapart_price)["lower"].round %></p></td>
+                  <td class="second bar studapart-mean-bar"data-toggle="tooltip" data-placement="top" title="Studapart price (mean) : <%= eval(@post.studapart_price)["mean"].round %>€"><p><%= eval(@post.studapart_price)["mean"].round %></p></td>
+                  <td class="third bar studapart-higher-bar"data-toggle="tooltip" data-placement="top" title="Studapart price (higher) : <%= eval(@post.studapart_price)["higher"].round %>€"><p><%= eval(@post.studapart_price)["higher"].round %></p></td>
                   </tr>
                   <tr class="qtr" id="q3">
                   <th scope="row-graph">Market prices</th>
-                  <td class="first bar market-lower-bar"data-toggle="tooltip" data-placement="top" title="Market price (lower) : <%= @response[:market_price][:lower] %>€"><p><%= @response[:market_price][:lower] %></p></td>
-                  <td class="second bar market-mean-bar"data-toggle="tooltip" data-placement="top" title="Market price (mean) : <%= @response[:market_price][:mean] %>€"><p><%= @response[:market_price][:mean] %></p></td>
-                  <td class="third bar market-higher-bar"data-toggle="tooltip" data-placement="top" title="Market price (higher) : <%= @response[:market_price][:higher] %>€"><p><%= @response[:market_price][:higher] %></p></td>
+                  <td class="first bar market-lower-bar"data-toggle="tooltip" data-placement="top" title="Market price (lower) : <%= eval(@post.market_price)["lower"].round %>€"><p><%= eval(@post.market_price)["lower"].round %></p></td>
+                  <td class="second bar market-mean-bar"data-toggle="tooltip" data-placement="top" title="Market price (mean) : <%= eval(@post.market_price)["mean"].round %>€"><p><%= eval(@post.market_price)["mean"].round %></p></td>
+                  <td class="third bar market-higher-bar"data-toggle="tooltip" data-placement="top" title="Market price (higher) : <%= eval(@post.market_price)["higher"].round %>€"><p><%= eval(@post.market_price)["higher"].round %></p></td>
                   </tr>
                   </tbody>
                   </table>
@@ -217,13 +235,23 @@
 
             <div class="text-column col-md-6 col-sm-12 col-xs-12">
               <div class="inner">
+
                 <h2>Text duplicates</h2>
+
                 <div class="description-box">
-                  <div class="number-of-posts"><%= (@response[:duplicated_text][0][1] * 100).round %> % </div> of the text matches this post:<br>
-                  Post n°<%= @response[:duplicated_text][0][0] %>
-                  <br>
-                  <%= (@response[:duplicated_text][1][1] * 100).round %> % of the text matches this post:<br>
-                  Post n°<%= @response[:duplicated_text][1][0] %>
+                  <% if eval(@post.reposting_history)[0].nil? %>
+                    No similar descriptions found inside your database
+                  <% else %>
+
+                     <%= eval(@post.reposting_history)[0]["description_similarity"] * 100 %> % of the description matches post <%= eval(@post.reposting_history)[0]["id"] %> with :
+                     <ul>
+                      <li>-<%= eval(@post.reposting_history)[0]["properties"].downcase %></li>
+                      <li>-<%= eval(@post.reposting_history)[0]["adress_similarity"].downcase.gsub("adresses", "address") %></li>
+                      <li>-<%= eval(@post.reposting_history)[0]["user_similarity"].downcase[0...-1] %></li>
+                      <li>-<%= eval(@post.reposting_history)[0]["rent_similarity"].downcase[0...-1] %></li>
+                      <li>-<%= eval(@post.reposting_history)[0]["surface_similairty"].downcase[0...-1] %></li>
+                    </ul>
+                  <% end %>
                 </div>
               </div>
             </div>
@@ -232,7 +260,11 @@
               <div class="inner">
                 <h2>Picture duplicates</h2>
                 <div class="description-box">
-                  <%= @response[:duplicated_images] %>
+                  <% if eval(@post.reposting_history)[0].nil? %>
+                    No similar pictures found inside your database
+                  <% else %>
+                     <%= eval(@post.reposting_history)[0] %>
+                  <% end %>
                 </div>
               </div>
             </div>
@@ -244,15 +276,39 @@
     <section class="testimonials-two" id="testimonials">
       <div class="auto-container">
 
+      <% if !(@post.pictures.nil?) %>
+        <% unless @post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",")[0].nil? %>
+          <% @post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",").each do |picture| %>
+
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+              <div class="card card-base" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= picture %>);">
+              </div>
+            </div>
+
+          <% end %>
+        <% end %>
+      <% end %>
+      <br>
+
         <% if !(@post.pictures.nil?) %>
          <% unless @post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",")[0].nil? %>
           <% @post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",").each do |picture| %>
-              <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= picture %>);">
-                  <div class="duplicate-number response-api">Results on the web : 1</div>
-                  <div class="picture-type response-api">Amateur</div>
+
+            <div class="row response-api">
+
+              <div class="col-xs-4">
+                <div class="card card-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= picture %>);">
+                  <div class="duplicate-number response-api"> Results on the web : <%= eval(@post["pictures_informations"])[eval(picture)]["nb_duplicates"] %> </div>
+                  <div class="picture-type response-api"><%= eval(@post["pictures_informations"])[eval(picture)]["quality"] %></div>
                 </div>
               </div>
+
+              <div class="reverse-picture-results col-xs-8">
+                <% eval(@post.pictures_informations)[eval(picture)]["list_duplicates"].each do |link| %>
+                  <div class="response-api"><%= link["crawl_date"] %> : <%= link["url"] %></div>
+                <% end %>
+              </div>
+            </div>
             <% end %>
         <% end %>
         <% end %>

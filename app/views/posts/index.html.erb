@@ -7,9 +7,7 @@
           <% @posts.each do |post| %>
             <% if !(post.pictures.nil?) %>
               <div class="col-xs-12 col-sm-6 col-md-4">
-                <% unless post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",")[0].nil? %>
-                <% picture = post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",")[0][0..-1] %>
-                <% end %>
+                <% picture = eval(post.pictures)[0] %>
                 <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= picture %>');">
                 <% if post.status == "Scam" %>
                   <div class="card-label legit-label"><%= post.status %></div>

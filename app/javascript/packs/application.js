@@ -30,8 +30,10 @@ document.getElementById("launch-engine").addEventListener("click", (event) => {
   document.querySelectorAll(".response-api").forEach((element) => { element.classList.toggle("response-api");
   })
   document.querySelector(".preloader-barinomi").classList.remove("preloader-hidden");
-  setTimeout(hideLoader, 2000);
+  setTimeout(hideLoader, 5000);
   document.querySelector(".description-base").classList.add("preloader-hidden");
+  document.querySelectorAll(".card-base").forEach((element) => { element.classList.add("display-none");
+  })
 });
 
 $(document).ready(function() {
