@@ -72,6 +72,31 @@ class PostsController < ApplicationController
     page.search('#property-photos > div.row > div > div.three-image.div-2.small-12.p-mobile-0.div-image-3.medium-4.columns.nopadding > div.three-image.small-12.m-t-15.div-image-3.margin-3-image.columns.div-image-3-3 > a').each do |element|
       @pictures_array << element.attribute('href').value
     end
+
+  studapart_post = {
+    "status": "not verified",
+    "firstname": "#{@name}",
+    "address": @address,
+    "rent_with_expenses_amount": @price.to_i,
+    "rooms_count": 0,
+    "pictures": @pictures_array,
+    "zip_code": @address[0...-6].split(//).last(5).join.to_i,
+    "lastname": "",
+    "property_id": "",
+    "coordinates": "",
+    "property_surface": @surface.to_i,
+    "city": "",
+    "description": "#{@description}",
+    "user_id": ""
+  }
+  status = Timeout::timeout(10000) {
+  uri = URI("http://localhost:5000/analyze_post")
+  http = Net::HTTP.new(uri.host, uri.port)
+  req = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json'})
+  req.body = studapart_post.to_json
+  res = http.request(req)
+  @response = JSON.parse(res.body)
+  }
   end
 
   def create
@@ -89,6 +114,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit([:status, :city, :rent_with_expenses_amount, :user_id, :description, :firstname, :lastname, :property_surface, :coordinates, :address, :pictures, :rooms_count, :zip_code, :link])
+    params.require(:post).permit([:status, :city, :rent_with_expenses_amount, :user_id, :description, :firstname, :lastname, :property_surface, :coordinates, :address, :pictures, :rooms_count, :zip_code, :link, :nb_posts_user, :reposting_history, :market_price, :studapart_price, :labels, :syntax_checking, :languages_detected, :description_suspiciousness, :pictures_informations, :input_errors, :email_detected, :url_detected, :phone_detected])
   end
 end

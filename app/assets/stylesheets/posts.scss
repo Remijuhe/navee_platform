@@ -125,7 +125,7 @@
 }
 
 .display-none {
-  display: none;
+  display: none !important;
 }
 
 .reverse-picture-results {
@@ -136,3 +136,8 @@
   text-align: center;
 }
 
+.reposting-percent {
+ font-size: 30px;
+ color: #0085F3;
+ font-weight: bold;
+}

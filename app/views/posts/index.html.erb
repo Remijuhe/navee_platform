@@ -1,11 +1,15 @@
 
 <%= render 'shared/navbar_index' %>
+<%= render 'shared/loading_engine' %>
 <section class="main-banner banner-one banner-index" id="banner">
   <div class="auto-container">
     <div class="row clearfix">
       <div id="posts">
+
           <% @posts.each do |post| %>
-            <% if !(post.pictures.nil?) %>
+          <% unless post.pictures.nil? %>
+            <% if post.pictures.include?("[") %>
+
               <div class="col-xs-12 col-sm-6 col-md-4">
                 <% picture = eval(post.pictures)[0] %>
                 <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= picture %>');">
@@ -37,9 +41,53 @@
                  <%= link_to "", post_path(post.id), class:"card-link" %>
                 </div>
               </div>
+
+            <% else %>
+
+              <div class="col-xs-12 col-sm-6 col-md-4">
+                <% picture = post.pictures.split(" ")[0] %>
+                <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= picture %>');">
+                <% if post.status == "Scam" %>
+                  <div class="card-label legit-label"><%= post.status %></div>
+                <% elsif post.status == "Legit" %>
+                  <div class="card-label legit-label"><%= post.status %></div>
+                <% elsif post.status == "Call required" %>
+                  <div class="card-label legit-label"><%= post.status %></div>
+                <% else %>
+                  <div class="card-label not-checked-label"><%= post.status %></div>
+                <% end %>
+                <div class="card-title">
+                  <% if !(post.city.nil?) %>
+                    <%= post.city %>
+                  <% else %>
+                    Paris
+                  <% end %>
+                </div>
+                <div class="card-surface">
+                  <% if !(post.property_surface.nil?)%>
+                    <%= post.property_surface.round %>m2
+                  <% end %>
+                </div>
+                <div class="card-rent">
+                <%= post.rent_with_expenses_amount.round %>€
+                </div>
+                <a class="card-link" href="#" ></a>
+                 <%= link_to "", post_path(post.id), class:"card-link" %>
+                </div>
+              </div>
+
             <% end %>
+
+
+          <% end %>
           <% end %>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  document.querySelector("#new_post > input.theme-btn.btn-style-one.btn-small.add-post").addEventListener("click", (event) => {
+  document.querySelector(".preloader-barinomi").classList.remove("preloader-hidden");
+});
+</script>

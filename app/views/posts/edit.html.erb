@@ -1,4 +1,3 @@
-<%= render 'shared/loading' %>
 <%= render 'shared/navbar_alternate' %>
 <section class="contact-section" id="contact">
   <div class="auto-container">
@@ -20,7 +19,20 @@
             <%= f.input :property_surface, input_html: { value: @surface.gsub("m2","").to_i } %>
             <%= f.input :address, input_html: { value: @address } %>
             <%= f.input :city, input_html: { value: @city } %>
-            <%= f.input :pictures, input_html: { value: "#{@pictures_array}" } %>
+            <%= f.input :pictures, input_html: { value: @pictures_array } %>
+            <%= f.input :nb_posts_user, input_html: { value: @response["nb_posts_user"] }, as: :hidden %>
+            <%= f.input :reposting_history, input_html: { value: @response["reposting_history"] }, as: :hidden  %>
+            <%= f.input :market_price, input_html: { value: @response["market_price"].to_s }, as: :hidden  %>
+            <%= f.input :studapart_price, input_html: { value: @response["studapart_price"].to_s }, as: :hidden  %>
+            <%= f.input :labels, input_html: { value: @response["labels"].to_s }, as: :hidden  %>
+            <%= f.input :syntax_checking, input_html: { value: @response["syntax_checking"].to_s }, as: :hidden  %>
+            <%= f.input :languages_detected, input_html: { value: @response["languages_detected"].to_s }, as: :hidden  %>
+            <%= f.input :description_suspiciousness, input_html: { value: @response["lexical_scammer_score"] }, as: :hidden  %>
+            <%= f.input :pictures_informations, input_html: { value: @response["pictures_informations"].to_s }, as: :hidden  %>
+            <%= f.input :input_errors, input_html: { value: @response["input_errors"].to_s }, as: :hidden  %>
+            <%= f.input :email_detected, input_html: { value: @response["email_detected"] }, as: :hidden  %>
+            <%= f.input :url_detected, input_html: { value: @response["url_detected"] }, as: :hidden  %>
+            <%= f.input :phone_detected, input_html: { value: @response["phone_detected"] }, as: :hidden  %>
             <%= f.submit "Add a new post", class:"theme-btn btn-style-two" %>
           <% end %>
         </div>

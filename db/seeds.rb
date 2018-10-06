@@ -1,11 +1,10 @@
 require 'json'
 require 'timeout'
+# p "Destroy all posts..."
 
-p "Destroy all posts..."
+# Post.destroy_all
 
-Post.destroy_all
-
-p "Cleaning database: success"
+# p "Cleaning database: success"
 
 p "Generating all posts..."
 
@@ -13,12 +12,11 @@ uri = URI("http://localhost:5000/analyze_post")
 http = Net::HTTP.new(uri.host, uri.port)
 req = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json'})
 
-filepath = 'db/flagged_studapart_posts.json'
+filepath = 'db/demo_studapart_posts.json'
 serialized_studapart_posts = File.read(filepath)
 studapart_posts = JSON.parse(serialized_studapart_posts)
 studapart_posts.each do |studapart_post|
   status = Timeout::timeout(10000) {
-    if [2637, 11584, 4859, 8192, 7107, 10292, 9212, 14084, 2830, 2657, 2176, 4517, 10499, 7812, 21921, 50, 11149].include?(studapart_post[1]["id"])
     req.body = studapart_post[1].to_json
     res = http.request(req)
     response = JSON.parse(res.body)
@@ -26,8 +24,7 @@ studapart_posts.each do |studapart_post|
     post.save
     p "ok"
     p studapart_post
-    end
-  }
+}
 end
 
 p "Posts generation : success"

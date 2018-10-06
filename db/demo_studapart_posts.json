@@ -1,19 +1,173 @@
-   { "30":{
-      "id": 3198,
+{
+
+  "1885":{
+      "id": 1885,
+      "city":"Paris",
+      "rent_with_expenses_amount":548,
+      "user_id":"2fab6c77-b365-412d-8ebe-4a585d7bef37",
+      "description":"Charmant appartement 1 pièce entièrement meublé d'un immeuble clair et calme dans le marais composé d'une entrée, une pièce principale, une cuisine séparée équipée et aménagée, une salle de douche avec WC. Proche des station de métro : arts et métiers (100m), Rambuteau (250m) Centre Pompidou 500m, Hôtel de ville 800m, Notre Dame 1 km.",
+      "firstname":"Philippe",
+      "lastname":"Davain",
+      "property_surface":20,
+      "coordinates":"(48.8629846,2.35442469999998)",
+      "address":"Rue Beaubourg",
+      "pictures":["https://student.studapart.com/media/cache/property_images_large/59664459a0db0.jpg", "https://student.studapart.com/media/cache/property_images_large/5966445c0dfae.jpg", "https://student.studapart.com/media/cache/property_images_large/5966445e568dd.jpg", "https://student.studapart.com/media/cache/property_images_large/5966445fa442c.jpg", "https://student.studapart.com/media/cache/property_images_large/59664461770a0.jpg", "https://student.studapart.com/media/cache/property_images_large/59664461a8db3.jpg"],
+      "rooms_count":1,
+      "property_id":"bf6b2c27-99bb-415a-beee-ccfb56bf9048",
+      "zip_code":"75003"
+  },
+
+  "1953":{
+      "id": 1953,
+      "city":"Paris",
+      "rent_with_expenses_amount":650,
+      "user_id":"185babda-e597-41c1-b4be-55a3d56de314",
+      "description":"Bel immeuble Pierre de taille. Appartement situé au 4ème étage avec ascenseur comprenant séjour avec 2 chambres, cuisine séparée et équipée, salle d'eau avec fenêtre, dressing, wc séparée et cave blindée.",
+      "firstname":"Jean-Marc",
+      "lastname":"BOISSEAU",
+      "property_surface":65,
+      "coordinates":"(48.8917695,2.34217209999997)",
+      "address":"Rue de Trétaigne",
+      "pictures":["https://student.studapart.com/media/cache/property_images_large/59fcd0e942bd3.jpg", "https://student.studapart.com/media/cache/property_images_large/59fcd0fa84a22.jpg", "https://student.studapart.com/media/cache/property_images_large/59fcd10469ec4.jpg", "https://student.studapart.com/media/cache/property_images_large/59fcd10c3dec0.jpg", "https://student.studapart.com/media/cache/property_images_large/59fcd11909f9c.jpg"],
+      "rooms_count":3,
+      "property_id":"4e417505-2306-46bb-8e55-7f2d10dcb78b",
+      "zip_code":"75018"
+  },
+
+  "1735":{
+      "id": 735,
+      "city":"Paris",
+      "rent_with_expenses_amount":600,
+      "user_id":"b8d5d899-2b8e-4fb1-85ca-8bea57ec8845",
+      "description":"Studio meublé à  Paris 24m2, situé Rue Charlot dans le 3ème arrondissement de Paris - quartier Marais, dans un immeuble parisien de standing, au 3ème étage avec ascenseur. Cet appartement comporte 1 salon, 1 cuisine américaine, 1 salle de douche, WC séparés. Le chauffage dans cet appartement est individuel électrique. Cet appartement parisien est à  louer sur des périodes de 1 à  2 mois, 3 à  5 mois, 6 à  12 mois, et plus de 12 mois. Stations de métro:  Station de métroLigne de métro 8 Balard - Créteil - PréfectureSt-Sébastien Froissart  Station de métroLigne de métro 11 Châtelet - Mairie des LilasRambuteau",
+      "firstname":"Olgar",
+      "lastname":"Sellier",
+      "property_surface":24,
+      "coordinates":"(48.8644664,2.36420390000001)",
+      "address":"79 Rue Charlot",
+      "pictures":["https://student.studapart.com/media/cache/property_images_large/58dba8321b97f.jpg", "https://student.studapart.com/media/cache/property_images_large/58dba84066cf7.jpg", "https://student.studapart.com/media/cache/property_images_large/58dba84c6943e.jpg", "https://student.studapart.com/media/cache/property_images_large/58dba85508b62.jpg", "https://student.studapart.com/media/cache/property_images_large/58dba857694bc.jpg", "https://student.studapart.com/media/cache/property_images_large/58dba8583a333.jpg", "https://student.studapart.com/media/cache/property_images_large/58dba869a3544.jpg", "https://student.studapart.com/media/cache/property_images_large/58dba86d44614.jpg", "https://student.studapart.com/media/cache/property_images_large/58dba86f56249.jpg", "https://student.studapart.com/media/cache/property_images_large/58dba86f93cb4.jpg"],
+      "rooms_count":1,
+      "property_id":"1ae297e1-1b86-4f1f-ad97-3e79ff393aa8",
+      "zip_code":"75003"
+  },
+
+   "38":{
+      "id": 4643,
+      "city":"Paris",
+      "rent_with_expenses_amount":420,
+      "user_id":"f20a93c6-0cac-4a8f-b74a-0ef551639b85",
+      "description":"A louer studio meublé avec une pièce principale de 24 m2, kitchenette et salle de douche séparées. Studio équipé, une armoire, meuble TV et TV, une table à  manger, 2 chaises et un bureau. Kitchenette équipée avec un réfrigérateur, plaques électriques, micro-ondes et vaisselle. Entrée indépendante, dans un secteur calme, proche de la gare, centre commercial. Idéal pour personne vivant seule et/ou un étudiant.",
+      "firstname":"Laurent",
+      "lastname":"Olivier",
+      "property_surface":25,
+      "coordinates":"(48.8694398,2.30352949999997)",
+      "address":"60 Rue Pierre Charron",
+      "pictures":["https://student.studapart.com/media/cache/property_images_large/59a4a04d0ef1a.jpg", "https://student.studapart.com/media/cache/property_images_large/59a4a05845e28.jpg", "https://student.studapart.com/media/cache/property_images_large/59a4a059aa8eb.jpg", "https://student.studapart.com/media/cache/property_images_large/59a4a05a08220.jpg", "https://student.studapart.com/media/cache/property_images_large/59a4a05a37e6b.jpg", "https://student.studapart.com/media/cache/property_images_large/59a4a05a60b17.jpg", "https://student.studapart.com/media/cache/property_images_large/59a4a05b425d5.jpg"],
+      "rooms_count":1,
+      "property_id":"6f8ee6b2-b4ff-4c51-8ea6-7fffdf29f8fb",
+      "zip_code":"75008"
+   },
+
+   "58":{
+    "id": 6702,
+    "city":"Paris",
+    "rent_with_expenses_amount":650,
+    "user_id":"26f554b2-7ba1-4da6-b8ff-dc0443a9e2bd",
+    "description":"Ce studio à  louer à  Paris de standing refait complètement à  neuf offre une cuisine équipée (réfrigérateur/congélateur, four, micro-ondes, lave-vaisselle, grille-pain, machine à  laver séchante...) ouverte sur la pièce à  vivre, une salle de bain avec douche et WC, une pièce à  vivre avec TV, chaine HIFI, ADSL (veuillez apporter votre propre ordinateur portable pour Internet), un coin repas, avec une table et 4 chaises, un canapé lit 2 personnes (140x190) de qualité, ainsi qu'un \"lit-placard\" de qualité (pour 2 personnes), et un coin repas, le tout avec une décoration moderne.",
+    "firstname":"CAROLINA",
+    "lastname":"POTAULANTE",
+    "property_surface":22,
+    "coordinates":"(48.8588555,2.34619720000001)",
+    "address":"Rue des Lavandières Sainte-Opportune",
+    "pictures":["https://student.studapart.com/media/cache/property_images_large/599ef3c9eb28e.jpg", "https://student.studapart.com/media/cache/property_images_large/599ef3e367efe.jpg", "https://student.studapart.com/media/cache/property_images_large/599ef4157789d.jpg", "https://student.studapart.com/media/cache/property_images_large/599ef42c0977b.jpg", "https://student.studapart.com/media/cache/property_images_large/599ef4430b61b.jpg", "https://student.studapart.com/media/cache/property_images_large/599ef455f1903.jpg"],
+    "rooms_count":1,
+    "property_id":"2f5b3014-5d59-4ead-bb54-792de14a6b4d",
+    "zip_code":"75001"
+  },
+
+   "89":{
+      "id": 10995,
       "city":"Paris",
       "rent_with_expenses_amount":580,
-      "user_id":"b5d1bdbf-2fe4-47cc-a7f6-951afb0133b7",
-      "description":"L'appartement se situe au 4ème étage avec ascenseur Dans un bel immeuble haussmannien de 24 m2 comprenant une pièce principale, une cuisine équipée, une salle d'eau avec WC. Appartement entièrement rénové avec goût. Mobilier Neuf Beaucoup de charme et très belles.Gardien, Internet Inclus, Lave linge, Sèche linge, Lave vaisselle, Télévision, Sèche linge, Vaisselle. disposition: fer à  repasser, sèche-cheveux. Internet (Connexion Wifi). Place de parking (couvert). Veuillez noter: Logement pour non fumeurs.",
-      "firstname":"Huguette",
-      "lastname":"BERTHOLET",
+      "user_id":"3356439d-797f-4c92-81b9-bc1b9c454fdf",
+      "description":"Superbe studio meublé de 24 m2 comprenant une pièce principale, une cuisine équipée, une salle d'eau avec WC. Appartement entièrement rénové avec goût. Mobilier Neuf Beaucoup de charme et très belles.Gardien, Internet Inclus, Lave linge, Sèche linge, Lave vaisselle, Télévision, Sèche linge, Vaisselle. disposition: fer à  repasser, sèche-cheveux. Internet (Connexion Wifi). Place de parking (couvert). Veuillez noter: Logement pour non fumeurs.",
+      "firstname":"Pierre",
+      "lastname":"Sichel",
       "property_surface":24,
-      "coordinates":"(48.8422752,2.28607950000003)",
-      "address":"4 Rue Boucicaut",
-      "pictures":["https://student.studapart.com/media/cache/property_images_large/59269883e7418.jpg", "https://student.studapart.com/media/cache/property_images_large/592698841afe6.jpg", "https://student.studapart.com/media/cache/property_images_large/59269884522cf.jpg", "https://student.studapart.com/media/cache/property_images_large/5926988746d7b.jpg"],
+      "coordinates":"(48.8476848,2.28950350000002)",
+      "address":"46 Rue de Lourmel",
+      "pictures":["https://student.studapart.com/media/cache/property_images_large/5b2b7491d50f4.jpg", "https://student.studapart.com/media/cache/property_images_large/5b2b7492b398f.jpg", "https://student.studapart.com/media/cache/property_images_large/5b2b7492d8cff.jpg", "https://student.studapart.com/media/cache/property_images_large/5b2b7493be341.jpg", "https://student.studapart.com/media/cache/property_images_large/5b2b7493e9cc1.jpg", "https://student.studapart.com/media/cache/property_images_large/5b2b749597b48.jpg", "https://student.studapart.com/media/cache/property_images_large/5b2b7496cfcd4.jpg", "https://student.studapart.com/media/cache/property_images_large/5b2b7497e11e8.jpg", "https://student.studapart.com/media/cache/property_images_large/5b2b74987bee0.jpg"],
       "rooms_count":1,
-      "property_id":"add93cc3-c7c8-4b5f-af56-5a3858574a84",
+      "property_id":"16a7b10e-7fa2-4e2e-9513-de6c37a1f583",
       "zip_code":"75015"
-   }
+   },
 
+   "91":{
+      "id": 11146,
+      "city":"Paris",
+      "rent_with_expenses_amount":750,
+      "user_id":"9f8ea031-a280-4a6a-8f0e-5aa6f2373e74",
+      "description":"Studio de 27m2 (pouvant acceuillir confortablement jusqu'à  4 personnes Veritable studio comprenant une grande pièce principale 18m2, une equipée équipée, et une salle de bain 7m2 la pièce principale de 18 m2 comprend a) un veritable lit de 140 x190 b) une table et 3 chaises c) lit d'appointpouvant acceuillir confortablement une personnes supplémentaire) d)canapé convertible e) penderie et commode la kitchchenette est totalement équipée a) refrigérateur, plaques électriques, four micro-onde, etc. b) nécessaire de cuisine: casseroles, poeles, fait-tout etc. c) assiettes, couteaux fourchettes etc etc la salle de bain est équipée d'une baignoire-douche, lavabo, toilettes et meubles une grande baie vitrée avec double vitrage (même si le quartier muticulturel est calme et sûr) WIFI télévision ecran plat par câble sèche cheveux draps, couettes oreillers sont bien sûr fournis sortie de bain serviettes de bain et de toilette fournis, lave linge et sèche linge à  disposition près de la ligne de métro 2 à  150mètres et -4-5 et RER (Réseau Express Régional) B et D 3 points velib à  moins de 50 mètres (bicyclette... 1 point autolib à  moins de 100 mètres le RER B vous amène directement aux aéroports ROISSY-charles de gaulle et ORLY la Gare du Nord à  quelques minutes vous emmène directement en Eurostar et en Thalys (Londres, Bruxelles et Amsderdam ...) et même à  l'aéroport de BEAUVAIS, la gare routière de la porte de Bagnolet Dans un périmètrede 50 mètres : nombreux restaurants (franà§ais, indiens, pakistanais, arabes, chinois ...) nombreux supermarchés (DIA,Franprix, Monoprix..) et quelques boutiques ouvertes jusqu'à  5A.M. A quelques minutes à  pied du Sacré-Coeur (400mètres), du Moulin Rouge (400mètres), des buttes chaumont, du canal saint martin (400mètres) et de nombreux théatres. métros, bus (65,48,etc) RER (B et D) vous permettent un accès rapide à  tous les centres d'intérêts de Paris -arc de triomphe direct en 15 minutes, -les halles et Notre dame en 5 minutes -quartier latin en 10 minutes et même de banlieue -Versailles Eurodisney) 3 points velib à  moins de 50 mètres (bicyclette... 1 point autolib à  moins de 100 mètres",
+      "firstname":"Dominique",
+      "lastname":"GARREAU",
+      "property_surface":27,
+      "coordinates":"(48.8852594,2.3565751999999)",
+      "address":"3 Rue Stephenson",
+      "pictures":["https://student.studapart.com/media/cache/property_images_large/5a0ad52cc4ac8.JPG", "https://student.studapart.com/media/cache/property_images_large/5a0ad53da74c8.JPG", "https://student.studapart.com/media/cache/property_images_large/5a0ad54781ebc.JPG", "https://student.studapart.com/media/cache/property_images_large/5a0ad556ee85c.JPG", "https://student.studapart.com/media/cache/property_images_large/5a0ad56478837.JPG", "https://student.studapart.com/media/cache/property_images_large/5a0ad573c0e8f.JPG", "https://student.studapart.com/media/cache/property_images_large/5a0ad583b49bb.JPG", "https://student.studapart.com/media/cache/property_images_large/5a0ad9160728d.jpg", "https://student.studapart.com/media/cache/property_images_large/5a0ad923b5c7c.jpg"],
+      "rooms_count":1,
+      "property_id":"7b719e27-0df0-4de4-9fdb-332728adef2a",
+      "zip_code":"75018"
+   },
+
+     "98":{
+      "id": 11753,
+      "city":"Paris",
+      "rent_with_expenses_amount":650,
+      "user_id":"53d9b2ff-fbe7-4d07-a328-3f2138bd1b15",
+      "description":"Appartement 2 pièces de charme entièrement rénové  - poutres apparentes hauteur sous plafond - 3ème et dernier étage sans ascenseur- prestations de qualité - très clair et très calme donne sur une superbe cour arborée dans immeuble ancien bien entretenu - 1 chambre de 16m2 (au sol) exposition Sud, sur petite cour. Séjour avec cuisine américaine équipée, exposition Ouest Salle d'eau avec toilettes et lave-linge, douche 1m10X90 et fenêtre. Parquet au sol. à‰tat impeccable, pas de travaux à  prévoir. Métro Gare de l'Est - rue du Faubourg Saint-Denis - 10ème. Contact direct:    benoit_candelle @ hotmail.com",
+      "firstname":"benoit",
+      "lastname":"CANDELLE",
+      "property_surface":30,
+      "coordinates":"(48.8747889,2.355592)",
+      "address":"101 Rue du Faubourg Saint-Denis",
+      "pictures":["https://student.studapart.com/media/cache/property_images_large/5a992bbf4dcce.jpg", "https://student.studapart.com/media/cache/property_images_large/5a992bcd91e2e.jpg", "https://student.studapart.com/media/cache/property_images_large/5a992bd80dd22.jpg"],
+      "rooms_count":2,
+      "property_id":"415af9e2-3e2d-43fd-afa9-a62c752c9a37",
+      "zip_code":"75010"
+   },
+
+   "686":{
+      "id": 686,
+      "city":"Paris",
+      "rent_with_expenses_amount": 500,
+      "user_id":"a0ee8d2f-ee73-4133-a8d8-120a8b09053f",
+      "description":"Colocation studio meublé possibilité deux pièces salon/chambre 28 m2 hauteur sous faux plafond 2.90m ( sous plafond 3.20) Rez de chaussée sur cour calme, aucune nuisance sonore (route ou métro) Proche de tous commerces, quartier très animé, nombreux restaurants, théâtres. Entre métro Lepeltier et grands boulevards, Cadet et notre Dame de Lorette lignes 7/8/9/12,.",
+      "firstname":"astrid_ducros@hotmail.com",
+      "lastname":"DUCROS",
+      "property_surface": 28,
+      "coordinates":"(48.8742204,2.3435415)",
+      "address":"48 Rue Richer",
+      "pictures": ["https://student.studapart.com/media/cache/property_images_large/5a2cfd5ad8585.jpg", "https://student.studapart.com/media/cache/property_images_large/5a2cfd64cb404.jpg", "https://student.studapart.com/media/cache/property_images_large/5a2cfd6a6c2d6.jpg", "https://student.studapart.com/media/cache/property_images_large/5a2cfd736a1c8.JPG"],
+      "rooms_count":1,
+      "property_id":"9cc519b5-96c1-4beb-8edf-c19d2f9647e7",
+      "zip_code":"75009"
+  },
+
+  "1340":{
+      "id": 1340,
+      "city":"Paris",
+      "rent_with_expenses_amount": 760,
+      "user_id":"412e687c-537f-4694-b6f2-cee476410763",
+      "description":"A 5 minutes de Dauphine, 2 pièces calme très lumineux, refait à  neuf, douche, wc, cuisine, plaques chauffantes. clic clac. 760 euros charges comprises. SMS XXXXXXXXXX e mail: XXXXX@XXX.XXX",
+      "firstname":"Bruno",
+      "lastname":"Chahal",
+      "property_surface": 25,
+      "coordinates":"(48.8677737,2.2759404)",
+      "address":"139 Rue de Longchamp",
+      "pictures":["https://student.studapart.com/media/cache/property_images_large/7270190408.jpg"],
+      "rooms_count":2,
+      "property_id":"28bdadd6-e305-477a-8c3b-3afc653a80f9",
+      "zip_code":"75116"
+  }
 
 }

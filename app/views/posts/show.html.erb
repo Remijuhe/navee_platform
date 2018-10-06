@@ -1,29 +1,36 @@
 <style>
 .post-bar {
   height: <%= @post_graph_height.round %>px;
+  max-height: 260px;
 }
 .studapart-lower-bar {
   height: <%= @studapart_price_height_lower.round %>px;
+  max-height: 260px;
 }
 
 .studapart-mean-bar {
   height: <%= @studapart_price_height_mean.round %>px;
+  max-height: 260px;
 }
 
 .studapart-higher-bar {
   height: <%= @studapart_price_height_higher.round %>px;
+  max-height: 260px;
 }
 
 .market-lower-bar {
   height: <%= @market_price_height_lower.round %>px;
+  max-height: 260px;
 }
 
 .market-mean-bar {
   height: <%= @market_price_height_mean.round %>px;
+  max-height: 260px;
 }
 
 .market-higher-bar {
   height: <%= @market_price_height_higher.round %>px;
+  max-height: 260px;
 }
 </style>
     <%= render 'shared/loading_engine' %>
@@ -86,12 +93,12 @@
                                 <div class="inner-box">
                                     <div class="icon"><figure class="image"><img src="../assets/icon-10.png" alt=""></figure></div>
                                     <h3>User</h3>
-                                    <div class="text">
+                                    <div class="text name-base">
                                       <%= @post.firstname %><br>
                                       <%= @post.lastname %>
-                                      <div class="response-api">
-                                        Number of posts: <%= @post.nb_posts_user %>
-                                      </div>
+                                    </div>
+                                    <div class="response-api" id="name-api" data-toggle="tooltip" data-placement="top" title="Number of posts : <%= @post.nb_posts_user %>">
+                                       <%= @post.firstname %> <%= @post.lastname %>
                                     </div>
                                 </div>
                             </div>
@@ -143,10 +150,37 @@
             <div class="text-column col-md-6 col-sm-12 col-xs-12">
               <div class="inner">
                 <h2>Description analysis</h2>
-                <div class="description-box">
-                  <div>
-                    Post length : <span class="number-of-posts" data-toggle="tooltip" data-placement="right" title="average length : 500 characters"> <%= @post.description.length %> characters </span>
+                <div>
+                  Description suspiciousness :
+                    <span class="number-of-posts" data-toggle="tooltip" data-placement="right" title="average score : 3.02 %">
+                      <%= @post.description_suspiciousness %> %
+                    </span>
                   </div>
+                <div class="description-box">
+                  <br>
+                  <div>
+                  Email detected :
+                    <span>
+                      <%= @post.email_detected %>
+                    </span>
+                  </div>
+                  <div>
+                  Phone number detected :
+                    <span>
+                      <%= @post.phone_detected %>
+                    </span>
+                  </div>
+                  <div>
+                  Url detected :
+                    <span>
+                      <%= @post.url_detected %>
+                    </span>
+                  </div>
+                  <br>
+                  <div>
+                    Post length : <span  data-toggle="tooltip" data-placement="right" title="average length : 500 characters"> <%= @post.description.length %> characters </span>
+                  </div>
+                  <br>
                   <div>
                   Language detected:
                     <% eval(@post.languages_detected).each do |language| %>
@@ -154,30 +188,6 @@
                         <%= language %>
                       </span>
                     <% end %>
-                  </div>
-                  <div>
-                  Description suspiciousness :
-                    <span class="number-of-posts" data-toggle="tooltip" data-placement="right" title="average score : 3.02 %">
-                      <%= @post.description_suspiciousness %> %
-                    </span>
-                  </div>
-                  <div>
-                  Email detected :
-                    <span class="number-of-posts">
-                      <%= @post.email_detected %>
-                    </span>
-                  </div>
-                  <div>
-                  Phone number detected :
-                    <span class="number-of-posts">
-                      <%= @post.phone_detected %>
-                    </span>
-                  </div>
-                  <div>
-                  Url detected :
-                    <span class="number-of-posts">
-                      <%= @post.url_detected %>
-                    </span>
                   </div>
                 </div>
               </div>
@@ -239,18 +249,23 @@
                 <h2>Text duplicates</h2>
 
                 <div class="description-box">
-                  <% if eval(@post.reposting_history)[0].nil? %>
+                  <% if @post.reposting_history == "" %>
                     No similar descriptions found inside your database
                   <% else %>
+                    <% if eval(@post.reposting_history)[0].nil? %>
+                      No similar descriptions found inside your database
+                    <% else %>
 
-                     <%= eval(@post.reposting_history)[0]["description_similarity"] * 100 %> % of the description matches post <%= eval(@post.reposting_history)[0]["id"] %> with :
-                     <ul>
-                      <li>-<%= eval(@post.reposting_history)[0]["properties"].downcase %></li>
-                      <li>-<%= eval(@post.reposting_history)[0]["adress_similarity"].downcase.gsub("adresses", "address") %></li>
-                      <li>-<%= eval(@post.reposting_history)[0]["user_similarity"].downcase[0...-1] %></li>
-                      <li>-<%= eval(@post.reposting_history)[0]["rent_similarity"].downcase[0...-1] %></li>
-                      <li>-<%= eval(@post.reposting_history)[0]["surface_similairty"].downcase[0...-1] %></li>
-                    </ul>
+                       <span class="reposting-percent"><%= (eval(@post.reposting_history)[0]["description_similarity"] * 100).round(2) %> %</span>  matches post <strong><%= eval(@post.reposting_history)[0]["id"] %></strong> with :
+                       <br></br>
+                       <ul>
+                        <li>-<%= eval(@post.reposting_history)[0]["properties"].downcase %></li>
+                        <li>-<%= eval(@post.reposting_history)[0]["adress_similarity"].downcase.gsub("adresses", "address") %></li>
+                        <li>-<%= eval(@post.reposting_history)[0]["user_similarity"].downcase[0...-1] %></li>
+                        <li>-<%= eval(@post.reposting_history)[0]["rent_similarity"].downcase[0...-1] %></li>
+                        <li>-<%= eval(@post.reposting_history)[0]["surface_similairty"].downcase[0...-1] %></li>
+                      </ul>
+                    <% end %>
                   <% end %>
                 </div>
               </div>
@@ -260,10 +275,14 @@
               <div class="inner">
                 <h2>Picture duplicates</h2>
                 <div class="description-box">
-                  <% if eval(@post.reposting_history)[0].nil? %>
+                  <% if @post.reposting_history == "" %>
                     No similar pictures found inside your database
                   <% else %>
-                     <%= eval(@post.reposting_history)[0] %>
+                    <% if eval(@post.reposting_history)[0].nil? %>
+                      No similar pictures found inside your database
+                    <% else %>
+                       <span class="reposting-percent"><%= eval(@post.reposting_history)[0]["pictures_similarity"] %></span>
+                    <% end %>
                   <% end %>
                 </div>
               </div>
@@ -276,42 +295,82 @@
     <section class="testimonials-two" id="testimonials">
       <div class="auto-container">
 
-      <% if !(@post.pictures.nil?) %>
-        <% unless @post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",")[0].nil? %>
-          <% @post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",").each do |picture| %>
+      <% if @post.pictures.include?("[") %>
+        <% pictures = eval(@post.pictures) %>
+        <% pictures.each do |picture| %>
 
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-              <div class="card card-base" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= picture %>);">
-              </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <div class="card card-base" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= picture %>);">
             </div>
+          </div>
 
-          <% end %>
         <% end %>
-      <% end %>
-      <br>
 
-        <% if !(@post.pictures.nil?) %>
-         <% unless @post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",")[0].nil? %>
-          <% @post.pictures.gsub("[", "").gsub("]", "").gsub("'", "").split(",").each do |picture| %>
+        <br>
 
-            <div class="row response-api">
+        <% pictures.each do |picture| %>
 
-              <div class="col-xs-4">
-                <div class="card card-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= picture %>);">
-                  <div class="duplicate-number response-api"> Results on the web : <%= eval(@post["pictures_informations"])[eval(picture)]["nb_duplicates"] %> </div>
-                  <div class="picture-type response-api"><%= eval(@post["pictures_informations"])[eval(picture)]["quality"] %></div>
-                </div>
-              </div>
+          <div class="row response-api">
 
-              <div class="reverse-picture-results col-xs-8">
-                <% eval(@post.pictures_informations)[eval(picture)]["list_duplicates"].each do |link| %>
-                  <div class="response-api"><%= link["crawl_date"] %> : <%= link["url"] %></div>
-                <% end %>
+            <div class="col-xs-4">
+              <div class="card card-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= picture %>);">
+                <div class="duplicate-number response-api"> Results on the web : <%= eval(@post["pictures_informations"])[picture]["nb_duplicates"] %> </div>
+                <div class="picture-type response-api"><%= eval(@post["pictures_informations"])[picture]["quality"] %></div>
               </div>
             </div>
+
+          <div class="reverse-picture-results col-xs-8">
+            <% if eval(@post.pictures_informations)[picture]["list_duplicates"] == [] %>
+              <div class="response-api">No results</div>
+            <% else %>
+              <% eval(@post.pictures_informations)[picture]["list_duplicates"].each do |link| %>
+                <div class="response-api"><%= link["crawl_date"] %> : <%= link["url"] %></div>
+              <% end %>
             <% end %>
+          </div>
+
+        </div>
+      <% end %>
+
+    <% else %>
+
+      <% pictures = @post.pictures.split(" ") %>
+      <% pictures.each do |picture| %>
+
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+          <div class="card card-base" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= picture %>);">
+          </div>
+        </div>
+
         <% end %>
-        <% end %>
-      </div>
-    </section>
+
+        <br>
+
+        <% pictures.each do |picture| %>
+
+          <div class="row response-api">
+
+            <div class="col-xs-4">
+              <div class="card card-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= picture %>);">
+                <div class="duplicate-number response-api"> Results on the web : <%= eval(@post["pictures_informations"])[picture]["nb_duplicates"] %> </div>
+                <div class="picture-type response-api"><%= eval(@post["pictures_informations"])[picture]["quality"] %></div>
+              </div>
+            </div>
+
+          <div class="reverse-picture-results col-xs-8">
+            <% if eval(@post.pictures_informations)[picture]["list_duplicates"] == [] %>
+              <div class="response-api">No results</div>
+            <% else %>
+              <% eval(@post.pictures_informations)[picture]["list_duplicates"].each do |link| %>
+                <div class="response-api"><%= link["crawl_date"] %> : <%= link["url"] %></div>
+              <% end %>
+            <% end %>
+          </div>
+
+        </div>
+      <% end %>
+
+    <% end %>
+    </div>
+  </section>
 

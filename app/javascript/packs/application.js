@@ -19,6 +19,7 @@ function hideLoader() {
 
 setTimeout(addImage, 3000);
 
+
 document.querySelector(".logo-wording").addEventListener("mouseenter", (event) => {
       document.querySelector(".logo-wording").classList.add("transform-active");
     });
@@ -32,10 +33,15 @@ document.getElementById("launch-engine").addEventListener("click", (event) => {
   document.querySelector(".preloader-barinomi").classList.remove("preloader-hidden");
   setTimeout(hideLoader, 5000);
   document.querySelector(".description-base").classList.add("preloader-hidden");
+  document.querySelector(".name-base").classList.add("display-none");
+  document.getElementById("name-api").classList.add("number-of-posts");
   document.querySelectorAll(".card-base").forEach((element) => { element.classList.add("display-none");
   })
 });
 
+
 $(document).ready(function() {
     $("body").tooltip({ selector: '[data-toggle=tooltip]' });
 });
+
+
