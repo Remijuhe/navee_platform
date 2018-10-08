@@ -4,32 +4,32 @@
   max-height: 260px;
 }
 .studapart-lower-bar {
-  height: <%= @studapart_price_height_lower.round %>px;
+  height: 75px;
   max-height: 260px;
 }
 
 .studapart-mean-bar {
-  height: <%= @studapart_price_height_mean.round %>px;
+  height: 150px;
   max-height: 260px;
 }
 
 .studapart-higher-bar {
-  height: <%= @studapart_price_height_higher.round %>px;
+  height: 75px;
   max-height: 260px;
 }
 
 .market-lower-bar {
-  height: <%= @market_price_height_lower.round %>px;
+  height: 75px;
   max-height: 260px;
 }
 
 .market-mean-bar {
-  height: <%= @market_price_height_mean.round %>px;
+  height: 150px;
   max-height: 260px;
 }
 
 .market-higher-bar {
-  height: <%= @market_price_height_higher.round %>px;
+  height: 75px;
   max-height: 260px;
 }
 </style>
@@ -160,31 +160,31 @@
                   <br>
                   <div>
                   Email detected :
-                    <span>
+                    <span class="number-of-posts">
                       <%= @post.email_detected %>
                     </span>
                   </div>
                   <div>
                   Phone number detected :
-                    <span>
+                    <span class="number-of-posts">
                       <%= @post.phone_detected %>
                     </span>
                   </div>
                   <div>
                   Url detected :
-                    <span>
+                    <span class="number-of-posts">
                       <%= @post.url_detected %>
                     </span>
                   </div>
                   <br>
                   <div>
-                    Post length : <span  data-toggle="tooltip" data-placement="right" title="average length : 500 characters"> <%= @post.description.length %> characters </span>
+                    Post length : <span class="number-of-posts"  data-toggle="tooltip" data-placement="right" title="average length : 500 characters"> <%= @post.description.length %> characters </span>
                   </div>
                   <br>
                   <div>
                   Language detected:
                     <% eval(@post.languages_detected).each do |language| %>
-                      <span>
+                      <span class="number-of-posts" data-toggle="tooltip" data-placement="right" title="language detected inside the description">
                         <%= language %>
                       </span>
                     <% end %>
@@ -198,7 +198,7 @@
                 <h2>Price analysis</h2>
                 <div class="label-price-box">
                   <% eval(@post.labels).each do |label| %>
-                    <div class="number-of-posts"><%= label %></div>
+                    <div class="number-of-posts"><%= label.capitalize %></div>
                   <% end %>
                 </div>
                 <div class="description-box graph-box overflow-visible">
@@ -206,26 +206,26 @@
                   <thead>
                   <tr>
                   <th></th>
-                  <th class="lower">Lower bracket</th>
-                  <th class="mean">Mean</th>
-                  <th class="upper">Upper bracket</th>
+                  <th class="lower">First quartile</th>
+                  <th class="mean">Median</th>
+                  <th class="upper">Third quartile</th>
                   </tr>
                   </thead>
                   <tbody>
                   <tr class="qtr" id="q1">
-                  <th scope="row-graph"></th>
+                  <th scope="row-graph">Post price</th>
                   <td class="post bar post-bar"data-toggle="tooltip" data-placement="top" title="Post price : <%= @post.rent_with_expenses_amount.round %>€"><p></p><%= @post.rent_with_expenses_amount.round %></td>
                   </tr>
                   <tr class="qtr" id="q2">
                   <th scope="row-graph">Studapart prices</th>
                   <td class="first bar studapart-lower-bar" data-toggle="tooltip" data-placement="top" title="Studapart price (lower) : <%= eval(@post.studapart_price)["lower"].round %>€"><p><%= eval(@post.studapart_price)["lower"].round %></p></td>
-                  <td class="second bar studapart-mean-bar"data-toggle="tooltip" data-placement="top" title="Studapart price (mean) : <%= eval(@post.studapart_price)["mean"].round %>€"><p><%= eval(@post.studapart_price)["mean"].round %></p></td>
+                  <td class="second bar studapart-mean-bar"data-toggle="tooltip" data-placement="top" title="Studapart price (mean) : <%= eval(@post.studapart_price)["mean"].round %>€"><p><%= eval(@post.studapart_price)["mean"].round(-1) %></p></td>
                   <td class="third bar studapart-higher-bar"data-toggle="tooltip" data-placement="top" title="Studapart price (higher) : <%= eval(@post.studapart_price)["higher"].round %>€"><p><%= eval(@post.studapart_price)["higher"].round %></p></td>
                   </tr>
                   <tr class="qtr" id="q3">
                   <th scope="row-graph">Market prices</th>
                   <td class="first bar market-lower-bar"data-toggle="tooltip" data-placement="top" title="Market price (lower) : <%= eval(@post.market_price)["lower"].round %>€"><p><%= eval(@post.market_price)["lower"].round %></p></td>
-                  <td class="second bar market-mean-bar"data-toggle="tooltip" data-placement="top" title="Market price (mean) : <%= eval(@post.market_price)["mean"].round %>€"><p><%= eval(@post.market_price)["mean"].round %></p></td>
+                  <td class="second bar market-mean-bar"data-toggle="tooltip" data-placement="top" title="Market price (mean) : <%= eval(@post.market_price)["mean"].round %>€"><p><%= eval(@post.market_price)["mean"].round(-1) %></p></td>
                   <td class="third bar market-higher-bar"data-toggle="tooltip" data-placement="top" title="Market price (higher) : <%= eval(@post.market_price)["higher"].round %>€"><p><%= eval(@post.market_price)["higher"].round %></p></td>
                   </tr>
                   </tbody>
